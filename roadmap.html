@@ -1099,6 +1099,139 @@
     .mh, .mb { padding-left: 1.5rem; padding-right: 1.5rem; }
     .m-title { font-size: 1.3rem; }
   }
+
+  /* ─── Presentation mode ─── */
+  .present-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 150;
+    background: var(--zwart);
+    color: var(--wit);
+    border: 1px solid var(--oranje);
+    padding: 0.85rem 1.4rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.25s;
+  }
+  .present-btn:hover {
+    background: var(--oranje);
+    color: var(--zwart);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px -10px rgba(230,172,0,0.35);
+  }
+  .present-btn .ply {
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 9px;
+    border-color: transparent transparent transparent var(--oranje);
+    transition: border-color 0.25s;
+  }
+  .present-btn:hover .ply { border-left-color: var(--zwart); }
+
+  .present-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--oranje);
+    z-index: 300;
+    width: 0;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 12px rgba(230,172,0,0.6);
+    display: none;
+  }
+  body.presenting .present-progress { display: block; }
+  body.presenting .present-btn { display: none; }
+
+  .present-stop {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 250;
+    background: var(--roos);
+    color: var(--wit);
+    border: none;
+    padding: 0.85rem 1.4rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 30px -10px rgba(186,69,118,0.4);
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  body.presenting .present-stop { display: inline-flex; }
+  .present-stop::before {
+    content: '';
+    width: 10px; height: 10px;
+    background: var(--wit);
+    border-radius: 1px;
+  }
+
+  .present-caption {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    background: rgba(17,17,17,0.92);
+    color: var(--wit);
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    gap: 0.7rem;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  body.presenting .present-caption { display: inline-flex; }
+  .present-caption .step-num {
+    color: var(--oranje);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+
+  /* Subtle entrance animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Focus glow during presentation */
+  body.presenting .present-focus {
+    box-shadow:
+      0 0 0 3px rgba(230,172,0,0.6),
+      0 0 50px rgba(230,172,0,0.25);
+    border-radius: 4px;
+    transition: box-shadow 0.5s ease;
+  }
 </style>
 </head>
 <body>
@@ -1803,7 +1936,113 @@ function closeM(){
 }
 function closeIfBg(e){ if (e.target === document.getElementById('ov')) closeM(); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); });
+
+/* ───── Reveal-on-scroll ───── */
+(() => {
+  const targets = document.querySelectorAll(
+    '.these, section.block, .quote, .duiding, .hs-card, .limit-card, .phase, .res-card, .embed-card'
+  );
+  targets.forEach(t => t.classList.add('reveal'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  targets.forEach(t => io.observe(t));
+})();
+
+/* ───── Presentatie-modus (auto-tour) ───── */
+const TOUR = [
+  { sel: 'header.hero',                            dwell: 4500, label: 'Introductie' },
+  { sel: '.these',                                 dwell: 4500, label: 'Centrale these' },
+  { sel: 'section.block:nth-of-type(1)',           dwell: 5000, label: '01 · Hypothese meetbaar maken' },
+  { sel: 'section.block:nth-of-type(2)',           dwell: 5500, label: '02 · Knelpunt' },
+  { sel: 'section.block:nth-of-type(3)',           dwell: 5000, label: '03 · Hub-and-Spoke' },
+  { sel: 'section.block:nth-of-type(4)',           dwell: 5000, label: '04 · Drie randvoorwaarden' },
+  { sel: '.block.roadmap',                         dwell: 3000, label: '05 · 3 fasen · 18 maanden' },
+  { sel: '.phase.ph1',     dwell: 4500, label: 'Fase 1 · Trede 1+2', modal: 'g1a' },
+  { sel: '.phase.ph1',     dwell: 4500, label: 'Gate 1b · Data readiness', modal: 'g1b' },
+  { sel: '.phase.ph2',     dwell: 5000, label: 'Fase 2 · Pilot · Trede 3+4', modal: 'g2' },
+  { sel: '.phase.ph2',     dwell: 4500, label: '5-elementen-template per metriek', modal: 'md' },
+  { sel: '.phase.ph3',     dwell: 4500, label: 'Fase 3 · Trede 5 · Schaal', modal: 'g3' },
+  { sel: '.block.resultaat', dwell: 5500, label: '06 · Beoogd resultaat' }
+];
+
+let TOUR_TIMER = null;
+let TOUR_ABORT = false;
+
+function startTour() {
+  TOUR_ABORT = false;
+  document.body.classList.add('presenting');
+  const totalDwell = TOUR.reduce((a, s) => a + s.dwell, 0);
+  let elapsed = 0;
+  runStep(0, totalDwell, elapsed);
+}
+
+function runStep(i, total, elapsed) {
+  if (TOUR_ABORT || i >= TOUR.length) return finishTour();
+  const step = TOUR[i];
+  const el = document.querySelector(step.sel);
+  if (!el) return runStep(i + 1, total, elapsed);
+
+  // Sluit eventuele open modal eerst zodat de pagina kan scrollen
+  closeM();
+
+  // Caption
+  document.getElementById('caption-text').innerHTML =
+    `<span class="step-num">${String(i+1).padStart(2,'0')}</span> ${step.label}`;
+
+  // Highlight
+  document.querySelectorAll('.present-focus').forEach(e => e.classList.remove('present-focus'));
+  if (!step.modal) el.classList.add('present-focus');
+
+  // Scroll (na korte delay zodat eventuele modal kan sluiten)
+  setTimeout(() => {
+    if (TOUR_ABORT) return;
+    el.scrollIntoView({ behavior: 'smooth', block: step.sel.includes('hero') ? 'start' : 'center' });
+  }, 200);
+
+  // Modal openen pas na scroll
+  if (step.modal) {
+    setTimeout(() => { if (!TOUR_ABORT) openM(step.modal); }, 1200);
+  }
+
+  // Progress
+  elapsed += step.dwell;
+  document.getElementById('progress-bar').style.width = Math.min(100, (elapsed/total)*100) + '%';
+
+  TOUR_TIMER = setTimeout(() => runStep(i + 1, total, elapsed), step.dwell);
+}
+
+function finishTour() {
+  clearTimeout(TOUR_TIMER);
+  closeM();
+  document.body.classList.remove('presenting');
+  document.querySelectorAll('.present-focus').forEach(e => e.classList.remove('present-focus'));
+  document.getElementById('progress-bar').style.width = '0%';
+  if (!TOUR_ABORT) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function stopTour() {
+  TOUR_ABORT = true;
+  finishTour();
+}
 </script>
+
+<!-- Presentatie-controls -->
+<div class="present-progress" id="progress-bar"></div>
+<button class="present-btn" onclick="startTour()" aria-label="Presentatie starten">
+  <span class="ply"></span> Presentatie
+</button>
+<button class="present-stop" onclick="stopTour()" aria-label="Presentatie stoppen">
+  Stop
+</button>
+<div class="present-caption" id="caption-text"></div>
 
 </body>
 </html>
