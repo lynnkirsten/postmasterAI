@@ -425,6 +425,69 @@
   .source-link:hover { color: var(--roos); border-bottom-color: var(--roos); }
   .arrow { color: var(--oranje); margin-right: 0.4rem; font-weight: 600; }
 
+  /* Theoretische duiding block — sec 02 */
+  .duiding {
+    margin-top: 1.8rem;
+    padding: 1.4rem 1.6rem;
+    background: var(--wit);
+    border-left: 3px solid var(--paars);
+    border-radius: 2px;
+  }
+  .duiding-label {
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--paars);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .duiding p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--grijs-tekst);
+    margin: 0.4rem 0;
+  }
+  .duiding p strong { color: var(--zwart); font-weight: 600; }
+
+  /* Per-card sourcetag — sec 04 */
+  .limit-source {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed var(--grijs-2);
+    font-size: 0.72rem;
+    color: var(--grijs-zacht);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .limit-source strong { color: var(--blauw); font-style: normal; font-weight: 600; }
+  .limit-card:nth-child(2) .limit-source strong { color: var(--paars); }
+  .limit-card:nth-child(3) .limit-source strong { color: var(--groen); }
+
+  /* Ambitieniveau label — sec 06 */
+  .ambition-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--oranje);
+    background: rgba(230,172,0,0.12);
+    padding: 0.4rem 0.9rem;
+    border-radius: 2px;
+    margin-top: 1rem;
+  }
+  .ambition-flag::before { content: '◆'; }
+  .ambition-foot {
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .ambition-foot strong { color: var(--oranje); font-style: normal; font-weight: 600; }
+
   /* — Limit (3 dimensies) — */
   .limit-grid {
     display: grid;
@@ -1090,25 +1153,27 @@
     <div class="advies-grid">
       <div class="advies-card">
         <h4>Baseline</h4>
-        <p><strong>Huidig centraal model.</strong> Doorlooptijd nu [TBD] weken, approval-cycles [TBD]. Vastgelegd in Fase&nbsp;1.</p>
+        <p><strong>Huidig centraal model</strong> via <strong>Loth (2025) Readiness Scan</strong> op 4-Fundament: Data · Tech · Processen · Cultuur. Doorlooptijd en approval-cycles gemeten in Fase 1b.</p>
       </div>
       <div class="advies-card">
         <h4>Target</h4>
-        <p>Decentraal model — advies bepaald op basis van benchmark McKinsey: <strong>6–12 weken per pilot</strong>.</p>
+        <p>Decentraal model &mdash; richtbenchmark McKinsey: <strong>6&ndash;12 weken per pilot</strong>. Concrete waarde voor ODV vastgesteld in Charter (Fase 1a).</p>
       </div>
       <div class="advies-card">
         <h4>Voordeel</h4>
-        <p><strong>40–70% productiviteitsverbetering</strong> mogelijk in decentrale modellen volgens benchmarks.</p>
+        <p><strong>40&ndash;70% productiviteitsverbetering</strong> in decentrale modellen volgens McKinsey-benchmark &mdash; ambitieniveau, niet target.</p>
       </div>
       <div class="advies-card">
-        <h4>Handeling</h4>
-        <p>Vastgelegd in de <strong>Governance Charter</strong>. Executive Sponsor en Product Owner bepalen baseline en target per dimensie.</p>
+        <h4>Format</h4>
+        <p><strong>Roos (2026) Beslisladder</strong>: 5 Treden, 3 Gates, 5-elementen-template per metriek. <em>Wie · welke data · drempelvorm · kill-criterium · heroverwegingsmoment</em> &mdash; zie roadmap §05.</p>
       </div>
     </div>
 
     <div class="sources">
-      <p><span class="arrow">↗</span><a class="source-link" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener">McKinsey (2026) · <em>Agentic AI Governance</em></a> — Pilots should be bound to 6 to 12 weeks.</p>
-      <p><span class="arrow">↗</span><a class="source-link" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener">McKinsey (2026) · <em>AI Transformation</em></a> — 40–70% productivity improvement in decentralized models.</p>
+      <p><span class="arrow">↗</span><strong>Roos (2026)</strong> · <em>Business Case van Transformatie</em> &mdash; Beslisladder met 5 Treden en 5-elementen-gate-template (p.18, p.20).</p>
+      <p><span class="arrow">↗</span><strong>Loth (2025)</strong> · <em>AI Roadmapping &amp; Readiness</em> &mdash; Stage gate model + Readiness Scan op 4-Fundament (Data, Tech, Processen, Cultuur).</p>
+      <p><span class="arrow">↗</span><a class="source-link" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener">McKinsey (2026) · <em>Agentic AI Governance</em></a> &mdash; pilots bound to 6&ndash;12 weeks.</p>
+      <p><span class="arrow">↗</span><a class="source-link" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener">McKinsey (2026) · <em>AI Transformation</em></a> &mdash; 40&ndash;70% productivity improvement in decentralized models.</p>
     </div>
   </div>
 </section>
@@ -1137,6 +1202,13 @@
       <div class="quote-label">ODV intern signaal</div>
       <p class="quote-text">Delivery is vastgelopen. De stap van algemene hulpmiddelen naar werkproces-gerichte oplossingen verloopt te traag. Discussies kantelen naar wie iets mag in plaats van naar doel en waarde.</p>
       <p class="quote-source">— Semigestructureerde interviews · Directeur IT ODV en Teamcoördinator IB · 2026</p>
+    </div>
+
+    <div class="duiding">
+      <div class="duiding-label">Theoretische duiding</div>
+      <p><strong>Stacey (1996)</strong> — bij toenemende complexiteit verliezen hiërarchische sturingsmodellen hun effectiviteit. <strong>Mintzberg (1979)</strong> beschrijft <em>adhocracy</em>: tijdelijke, decentrale samenwerkingsvormen passen beter in complexe contexten. <strong>Loorbach (2010)</strong> ziet dit als systemisch transitievraagstuk &mdash; oude routines remmen verandering en doorbreken vraagt fundamentele transitie.</p>
+      <p><strong>Ykema (2026)</strong> typeert dit als <em>"accountability gap"</em>: zonder expliciet beleggen <em>wie</em> verantwoordelijk is &mdash; medewerker, leidinggevende of leverancier &mdash; verschuift de discussie automatisch naar "wie iets mag" in plaats van "wat wel werkt". Dat is precies wat we hier zien.</p>
+      <p><strong>Roos (2026, AI Achmea)</strong> herkent in Achmea zeven concrete belemmeringen die dit knelpunt voeden: beheers-angst, trainingsmoeheid, tool-overbelasting, subjectiviteitsvertekening, gebrek aan stimulans, ontbreken van gamification, en hidden resistance.</p>
     </div>
   </div>
 </section>
@@ -1173,6 +1245,13 @@
       <li>Multidisciplinaire teams dicht op data en businessprocessen</li>
       <li>Eigenaarschap en governance via kaders</li>
     </ul>
+
+    <div class="sources">
+      <p><span class="arrow">↗</span><strong>Mintzberg (1979)</strong> · <em>adhocracy</em> &mdash; decentralisatie en tijdelijke, flexibele samenwerkingsvormen in complexe omgevingen.</p>
+      <p><span class="arrow">↗</span><strong>Laloux (2014)</strong> · <em>Reinventing Organizations</em> &mdash; evolutie naar autonomie, zingeving en zelfsturing als antwoord op AI-complexiteit.</p>
+      <p><span class="arrow">↗</span><strong>McKinsey (2017)</strong> · <em>Operating model frameworks</em> &mdash; gedistribueerde modellen leveren snelheid en flexibiliteit in dynamische markten.</p>
+      <p><span class="arrow">↗</span><strong>Harvard Business Review (2021)</strong> &mdash; centraal "Center of Enablement" met faciliterende rol; productgerichte teams met end-to-end eigenaarschap.</p>
+    </div>
   </div>
 </section>
 
@@ -1195,7 +1274,9 @@
         <ul>
           <li><strong>Formeel mandaat</strong> voor decentrale beslissingen</li>
           <li><strong>Governance-kaders</strong> vanuit centraal niveau</li>
+          <li><strong>Geoefende principes</strong> &mdash; concreet · bekend · geoefend · escalatiepad</li>
         </ul>
+        <div class="limit-source"><strong>Bron:</strong> Ykema (2026) 4 eisen · KPMG &amp; INSEAD (2026) · Roos (2026) Charter</div>
       </div>
       <div class="limit-card">
         <span class="limit-num">02</span>
@@ -1203,17 +1284,21 @@
         <h4>Platform &amp; Infrastructuur</h4>
         <ul>
           <li><strong>Gedeeld AI-platform</strong> voor pilots</li>
-          <li><strong>Data-ontsluiting</strong> beschikbaar</li>
+          <li><strong>Data-ontsluiting</strong> beschikbaar &mdash; toegang, kwaliteit, lineage</li>
+          <li><strong>MLOps-pijplijn</strong> &mdash; deployment, monitoring, drift-detectie</li>
         </ul>
+        <div class="limit-source"><strong>Bron:</strong> Loth (2025) 4-Fundament · Gartner (2025) MLOps · Forsgren et al. (2025)</div>
       </div>
       <div class="limit-card">
         <span class="limit-num">03</span>
         <div class="limit-tag">Decentraal</div>
         <h4>Volwassenheid &amp; Eigenaarschap</h4>
         <ul>
-          <li><strong>AI-volwassenheid</strong> in spoke-teams</li>
-          <li><strong>Cultuur</strong> van eigenaarschap</li>
+          <li><strong>AI-geletterdheid</strong> via Future Ready Skill Framework</li>
+          <li><strong>Psychologische veiligheid</strong> &mdash; succesvol falen toegestaan</li>
+          <li><strong>Cultuur</strong>: gedrag &rarr; overtuigingen &rarr; waarden &rarr; identiteit</li>
         </ul>
+        <div class="limit-source"><strong>Bron:</strong> Beerepoot (2026) Cultuur-Ontwikkelmodel · Van Benten (2026) · Edmondson (1999)</div>
       </div>
     </div>
   </div>
@@ -1360,28 +1445,31 @@
       <div class="section-num">06<span>Beoogd resultaat</span></div>
       <div>
         <h2>De <span class="accent-oranje">business case</span> in vier cijfers</h2>
-        <p class="section-lead">Wat Achmea ODV bereikt na 18 maanden gefaseerde transformatie — wanneer alle drie de gates zijn gepasseerd.</p>
+        <p class="section-lead">Wat Achmea ODV beoogt na 18 maanden gefaseerde transformatie &mdash; wanneer Gate 1a, 1b, 2 en 3 zijn gepasseerd.</p>
+        <span class="ambition-flag">Ambitieniveau · te ijken in Gate 1b</span>
       </div>
     </div>
 
     <div class="res-grid">
       <div class="res-card">
         <span class="res-v">50%</span>
-        <div class="res-l"><strong>Sneller</strong>Doorlooptijd van 18–24w naar 10–12w per use case</div>
+        <div class="res-l"><strong>Sneller</strong>Doorlooptijd verkort &mdash; richtwaarde McKinsey 6&ndash;12w per pilot</div>
       </div>
       <div class="res-card">
         <span class="res-v">75%</span>
-        <div class="res-l"><strong>Minder</strong>Approval-cycles van 4–5× naar 1–2× per pilot</div>
+        <div class="res-l"><strong>Minder</strong>Approval-cycles aantoonbaar verkort t.o.v. baseline</div>
       </div>
       <div class="res-card">
         <span class="res-v">&lt;3%</span>
-        <div class="res-l"><strong>Risico</strong>Governance-incidents onder controle</div>
+        <div class="res-l"><strong>Risico</strong>Governance-incidents onder controle, drift gemonitord</div>
       </div>
       <div class="res-card">
         <span class="res-v">3</span>
         <div class="res-l"><strong>Spokes</strong>Retail · Werkgever · Institutioneel autonoom</div>
       </div>
     </div>
+
+    <p class="ambition-foot"><strong>Let op &mdash;</strong> de cijfers 50% / 75% / &lt;3% zijn ambitiewaarden afgeleid van benchmarks (McKinsey, Roos). De daadwerkelijke ODV-targets worden vastgesteld in <strong>Gate 1b · Data readiness &amp; baseline</strong>, op basis van de baseline-meting van het huidige centrale model. Pas dan zijn deze waarden masterproof.</p>
   </div>
 </section>
 
