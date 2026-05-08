@@ -9,18 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Achmea blauwen — primair */
+    /* Achmea blauwen */
     --blauw-deep:    #1F5A7C;
     --blauw:         #2C729C;
     --blauw-mid:     #6EAFD6;
     --blauw-licht:   #9ECAE4;
     --blauw-mist:    #E8F2F9;
 
-    /* Accenten — strategisch ingezet */
-    --roos:   #BA4576;   /* knelpunt / risico */
-    --paars:  #3F4075;   /* hub / governance */
-    --groen:  #787A00;   /* spoke / waarde */
-    --oranje: #E6AC00;   /* highlight / gate */
+    /* Accenten */
+    --roos:   #BA4576;
+    --paars:  #3F4075;
+    --groen:  #787A00;
+    --oranje: #E6AC00;
 
     /* Neutraal */
     --wit:        #FFFFFF;
@@ -44,9 +44,7 @@
     font-weight: 400;
   }
 
-  /* — Layout — */
   .wrap { max-width: 1240px; margin: 0 auto; padding: 0 2.5rem; }
-  .narrow { max-width: 920px; }
 
   /* — Topbar — */
   .topbar {
@@ -110,11 +108,7 @@
     margin-bottom: 1.8rem;
     max-width: 14ch;
   }
-  header.hero h1 em {
-    font-style: italic;
-    color: var(--oranje);
-    font-weight: 400;
-  }
+  header.hero h1 em { font-style: italic; color: var(--oranje); font-weight: 400; }
   .hero-sub {
     font-size: clamp(1.05rem, 1.6vw, 1.25rem);
     line-height: 1.5;
@@ -148,7 +142,7 @@
   }
   @media (max-width: 720px) { .hero-meta { grid-template-columns: 1fr; gap: 1.4rem; } }
 
-  /* — These (pull-quote card) — */
+  /* — These — */
   .these-wrap { margin: -3.5rem auto 4rem; position: relative; z-index: 5; }
   .these {
     background: var(--wit);
@@ -177,12 +171,7 @@
     align-items: center;
     gap: 0.7rem;
   }
-  .these-label::before {
-    content: '★';
-    color: var(--oranje);
-    font-size: 0.9rem;
-    letter-spacing: 0;
-  }
+  .these-label::before { content: '★'; color: var(--oranje); font-size: 0.9rem; letter-spacing: 0; }
   .these p {
     font-family: 'Fraunces', Georgia, serif;
     font-size: clamp(1.3rem, 2.2vw, 1.7rem);
@@ -250,34 +239,10 @@
   }
   @media (max-width: 800px) { .section-head { grid-template-columns: 1fr; gap: 1rem; } }
 
-  /* — Tinted blocks — */
   .block.tint-mist { background: var(--blauw-mist); }
   .block.tint-paper { background: var(--paper); }
-  .block.dark {
-    background: var(--zwart);
-    background-image:
-      radial-gradient(ellipse 600px 400px at 100% 0%, rgba(63,64,117,0.4), transparent 60%),
-      radial-gradient(ellipse 600px 400px at 0% 100%, rgba(44,114,156,0.3), transparent 60%);
-    color: var(--wit);
-  }
-  .block.dark .section-num { color: var(--blauw-licht); border-top-color: var(--blauw-licht); }
-  .block.dark .section-num span { color: rgba(255,255,255,0.5); }
-  .block.dark .section-head h2 { color: var(--wit); }
-  .block.dark .section-head h2 .accent { color: var(--oranje); }
-  .block.dark .section-lead { color: rgba(255,255,255,0.75); }
 
-  /* — Editorial body text — */
-  .body-text p { margin-bottom: 1rem; max-width: 70ch; }
-  h3.sub {
-    font-family: 'Fraunces', serif;
-    font-size: 1.15rem;
-    color: var(--paars);
-    font-weight: 600;
-    margin: 1.6rem 0 0.6rem;
-    letter-spacing: -0.2px;
-  }
-
-  /* — Pain points list — */
+  /* — Pain list — */
   .pain-list {
     list-style: none;
     display: grid;
@@ -305,7 +270,6 @@
   }
   @media (max-width: 720px) { .pain-list { grid-template-columns: 1fr; } }
 
-  /* — Quote block — */
   .quote {
     background: var(--zwart);
     color: var(--wit);
@@ -353,7 +317,7 @@
     font-weight: 300;
   }
 
-  /* — Hub-and-spoke visual — */
+  /* — Hub-spoke — */
   .hs-visual {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -388,11 +352,7 @@
     font-weight: 700;
     margin-bottom: 1rem;
   }
-  .hs-tag::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-  }
+  .hs-tag::before { content: ''; width: 8px; height: 8px; border-radius: 50%; }
   .hs-card.hub   .hs-tag { color: var(--paars); }
   .hs-card.hub   .hs-tag::before { background: var(--paars); }
   .hs-card.spoke .hs-tag { color: var(--groen); }
@@ -413,7 +373,7 @@
   .hs-card p strong { color: var(--zwart); font-weight: 600; }
   @media (max-width: 720px) { .hs-visual { grid-template-columns: 1fr; } }
 
-  /* — Adviesgrid (Hypothese meten) — */
+  /* — Advies grid — */
   .advies-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -459,25 +419,9 @@
     .advies-card:last-child { border-bottom: none; }
   }
 
-  /* — Sources — */
-  .sources {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--grijs-2);
-    font-size: 0.86rem;
-  }
-  .sources p {
-    margin: 0.5rem 0;
-    color: var(--grijs-zacht);
-    font-weight: 300;
-  }
-  .source-link {
-    color: var(--blauw);
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid var(--blauw-licht);
-    transition: all 0.2s;
-  }
+  .sources { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--grijs-2); font-size: 0.86rem; }
+  .sources p { margin: 0.5rem 0; color: var(--grijs-zacht); font-weight: 300; }
+  .source-link { color: var(--blauw); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--blauw-licht); transition: all 0.2s; }
   .source-link:hover { color: var(--roos); border-bottom-color: var(--roos); }
   .arrow { color: var(--oranje); margin-right: 0.4rem; font-weight: 600; }
 
@@ -546,215 +490,254 @@
   .limit-card strong { color: var(--zwart); font-weight: 600; }
   @media (max-width: 900px) { .limit-grid { grid-template-columns: 1fr; } }
 
-  /* — Roadmap fasen — */
+  /* ─── ROADMAP — interactieve fasen op licht thema ─── */
+  .block.roadmap { background: var(--blauw-mist); }
+  .phases-intro {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.4rem;
+    font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--blauw); font-weight: 600;
+  }
+  .phases-intro .line { flex: 1; height: 1px; background: var(--blauw-licht); }
   .phases {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
-    margin-top: 2rem;
+    gap: 1.5rem;
+    margin-top: 1rem;
   }
   .phase {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: var(--wit);
+    border: 1px solid var(--grijs-2);
+    border-top: 4px solid var(--blauw);
+    padding: 2rem 1.8rem 2rem;
     border-radius: 2px;
-    overflow: hidden;
-    transition: all 0.3s;
-  }
-  .phase:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.22); }
-  .phase.open {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(230,172,0,0.4);
-  }
-  .phase-head {
-    width: 100%;
-    background: none;
-    border: none;
-    color: var(--wit);
-    text-align: left;
-    padding: 1.8rem 1.6rem;
-    cursor: pointer;
-    font-family: inherit;
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.5rem;
-    transition: background 0.2s;
+    flex-direction: column;
   }
-  .phase-head:hover { background: rgba(255,255,255,0.04); }
+  .phase.ph1 { border-top-color: var(--blauw); }
+  .phase.ph2 { border-top-color: var(--oranje); }
+  .phase.ph3 { border-top-color: var(--roos); }
+
   .ph-num {
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    color: var(--oranje);
-    font-weight: 700;
-    display: block;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-  }
-  .ph-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.6rem;
-    font-weight: 500;
-    display: block;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.6rem;
-  }
-  .ph-period {
-    font-size: 0.8rem;
-    color: var(--blauw-licht);
-    display: block;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-  }
-  .ph-toggle {
-    color: var(--oranje);
-    font-size: 1.4rem;
-    transition: transform 0.3s;
-    line-height: 1;
-  }
-  .phase.open .ph-toggle { transform: rotate(180deg); }
-  .phase-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
-  .phase.open .phase-body { max-height: 4000px; }
-  .phase-body-inner {
-    padding: 0 1.6rem 2rem;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 1.5rem;
-  }
-  .gate {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--oranje);
-    color: var(--zwart);
-    font-size: 0.68rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 2px;
-    margin-bottom: 1.4rem;
-  }
-  .gate.gate-3 { background: var(--groen); color: var(--wit); }
-  .gate::before {
-    content: '◆';
-    font-size: 0.7rem;
-  }
-  .phase-body h5 {
     font-size: 0.65rem;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--blauw-licht);
+    color: var(--blauw);
     font-weight: 700;
-    margin: 1.2rem 0 0.4rem;
+    margin-bottom: 0.5rem;
   }
-  .phase-body p {
-    font-size: 0.9rem;
-    line-height: 1.55;
-    color: rgba(255,255,255,0.88);
-    font-weight: 300;
-  }
+  .ph2 .ph-num { color: var(--oranje); }
+  .ph3 .ph-num { color: var(--roos); }
 
-  /* — KPI rij — */
-  .kpi-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.6rem;
-    margin: 1rem 0;
-  }
-  .kpi-cell {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 2px;
-    padding: 1rem 0.7rem;
-    text-align: center;
-  }
-  .kpi-v {
+  .ph-title {
     font-family: 'Fraunces', serif;
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     font-weight: 500;
-    color: var(--oranje);
-    display: block;
     line-height: 1;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
+    color: var(--zwart);
+    margin-bottom: 0.4rem;
   }
-  .kpi-l {
-    font-size: 0.68rem;
-    color: var(--wit);
-    margin-top: 0.5rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  .kpi-t {
-    font-size: 0.7rem;
-    color: var(--blauw-licht);
-    font-style: italic;
-    margin-top: 0.3rem;
-    font-weight: 300;
+  .ph-period {
+    font-size: 0.78rem;
+    color: var(--grijs-zacht);
+    letter-spacing: 0.8px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
   }
 
-  /* — Pilot box — */
-  .pilot-box {
-    background: linear-gradient(135deg, rgba(186,69,118,0.18), rgba(186,69,118,0.05));
-    border-left: 3px solid var(--roos);
-    padding: 1.2rem 1.3rem;
-    margin: 1rem 0;
-    border-radius: 0 2px 2px 0;
-  }
-  .pilot-tag {
+  /* Gate badge — clickable */
+  .gate {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    background: var(--roos);
-    color: var(--wit);
-    font-size: 0.62rem;
+    gap: 0.55rem;
+    font-size: 0.68rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 0.3rem 0.65rem;
-    border-radius: 2px;
-    margin-bottom: 0.7rem;
     font-weight: 700;
+    padding: 0.55rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.2s;
+    background: transparent;
+    font-family: inherit;
+    align-self: flex-start;
   }
-  .pilot-box h6 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    color: var(--wit);
-    margin-bottom: 0.4rem;
+  .gate::before { content: '◆'; font-size: 0.7rem; }
+  .gate::after  { content: '↗'; margin-left: 0.3rem; font-weight: 600; }
+  .ph1 .gate { color: var(--blauw); border-color: var(--blauw); background: rgba(44,114,156,0.06); }
+  .ph2 .gate { color: var(--oranje); border-color: var(--oranje); background: rgba(230,172,0,0.08); }
+  .ph3 .gate { color: var(--roos); border-color: var(--roos); background: rgba(186,69,118,0.06); }
+  .gate:hover { transform: translateY(-1px); }
+  .ph1 .gate:hover { background: var(--blauw); color: var(--wit); }
+  .ph2 .gate:hover { background: var(--oranje); color: var(--zwart); }
+  .ph3 .gate:hover { background: var(--roos); color: var(--wit); }
+
+  /* Dimension cards — clickable */
+  .dims { display: flex; flex-direction: column; gap: 0.5rem; }
+  .dim {
+    text-align: left;
+    width: 100%;
+    background: var(--paper);
+    border: 1px solid var(--grijs-2);
+    border-left: 3px solid var(--blauw);
+    padding: 0.85rem 1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.18s;
+    position: relative;
+  }
+  .dim:hover {
+    background: var(--wit);
+    transform: translateX(2px);
+    box-shadow: 0 4px 12px -6px rgba(0,0,0,0.1);
+  }
+  .ph1 .dim { border-left-color: var(--blauw); }
+  .ph2 .dim { border-left-color: var(--oranje); }
+  .ph3 .dim { border-left-color: var(--roos); }
+  .dim-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grijs-zacht);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  .dim-main {
+    font-size: 0.93rem;
+    color: var(--grijs-tekst);
+    line-height: 1.4;
     font-weight: 500;
+  }
+  .dim::after {
+    content: '↗';
+    position: absolute;
+    top: 0.85rem;
+    right: 1rem;
+    font-size: 0.85rem;
+    color: var(--grijs-3);
+    transition: color 0.2s;
+  }
+  .dim:hover::after { color: var(--blauw); }
+
+  /* Embedded clickable cards (metrics + pilot) */
+  .embed-card {
+    margin-top: 1rem;
+    padding: 1.1rem 1.2rem;
+    border-radius: 2px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+    font-family: inherit;
+    position: relative;
+  }
+  .embed-card.metrics {
+    background: rgba(230,172,0,0.06);
+    border-color: rgba(230,172,0,0.4);
+  }
+  .embed-card.metrics:hover {
+    background: rgba(230,172,0,0.12);
+    border-color: var(--oranje);
+  }
+  .embed-card.pilot {
+    background: rgba(186,69,118,0.05);
+    border-color: rgba(186,69,118,0.3);
+  }
+  .embed-card.pilot:hover {
+    background: rgba(186,69,118,0.1);
+    border-color: var(--roos);
+  }
+  .embed-label {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .embed-card.metrics .embed-label { color: #8C6900; }
+  .embed-card.pilot .embed-label { color: var(--roos); }
+  .embed-card::after {
+    content: '↗';
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    font-size: 0.85rem;
+    color: var(--grijs-3);
+    transition: color 0.2s;
+  }
+  .embed-card.metrics:hover::after { color: var(--oranje); }
+  .embed-card.pilot:hover::after { color: var(--roos); }
+  .embed-card h6 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--zwart);
+    line-height: 1.25;
+    margin-bottom: 0.3rem;
     letter-spacing: -0.2px;
   }
-  .pilot-box p {
+  .embed-card p {
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.85);
+    color: var(--grijs-zacht);
+    line-height: 1.45;
   }
-  .pilot-stats {
-    display: flex;
-    gap: 0.5rem;
+
+  /* metrics grid inside embed */
+  .md-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
     margin-top: 0.8rem;
-    flex-wrap: wrap;
+  }
+  .md-metric {
+    padding: 0.6rem 0.7rem;
+    background: var(--wit);
+    border: 1px solid var(--grijs-2);
+    border-left: 2px solid var(--oranje);
+    border-radius: 2px;
+  }
+  .md-metric-name {
+    font-size: 0.68rem; letter-spacing: 0.5px;
+    color: var(--grijs-zacht); font-weight: 600;
+    margin-bottom: 0.35rem; text-transform: uppercase;
+  }
+  .md-metric-progress {
+    height: 4px; background: var(--grijs-2); border-radius: 2px;
+    overflow: hidden; margin-bottom: 0.4rem;
+  }
+  .md-metric-progress-fill {
+    height: 100%; background: var(--oranje);
+  }
+  .md-metric-val {
+    font-family: 'Inter', monospace;
+    font-size: 0.78rem; font-weight: 600;
+    color: #8C6900;
+    letter-spacing: 0.3px;
+  }
+
+  .pilot-stats {
+    display: flex; gap: 0.4rem; margin-top: 0.7rem; flex-wrap: wrap;
   }
   .pilot-stat {
-    background: var(--oranje);
-    color: var(--zwart);
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.35rem 0.7rem;
+    background: var(--roos);
+    color: var(--wit);
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.3rem 0.55rem;
     border-radius: 2px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
   }
-  .gate-criteria {
-    background: rgba(230,172,0,0.1);
-    border: 1px dashed rgba(230,172,0,0.5);
-    padding: 0.9rem 1rem;
-    border-radius: 2px;
-    font-size: 0.84rem;
-    margin-top: 1rem;
-    color: rgba(255,255,255,0.92);
-    line-height: 1.5;
-  }
-  .gate-criteria strong { color: var(--oranje); font-weight: 600; }
 
-  @media (max-width: 1000px) { .phases { grid-template-columns: 1fr; } .kpi-row { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 1000px) { .phases { grid-template-columns: 1fr; } }
+  @media (max-width: 540px) { .md-grid { grid-template-columns: 1fr; } }
 
   /* — Resultaat — */
   .block.resultaat {
@@ -763,6 +746,7 @@
       radial-gradient(ellipse 600px 400px at 0% 50%, rgba(110,175,214,0.25), transparent 60%),
       radial-gradient(ellipse 500px 400px at 100% 100%, rgba(63,64,117,0.4), transparent 60%);
     color: var(--wit);
+    border-top: none;
   }
   .block.resultaat .section-num { color: var(--blauw-licht); border-top-color: var(--blauw-licht); }
   .block.resultaat .section-num span { color: rgba(255,255,255,0.55); }
@@ -821,25 +805,9 @@
   }
 
   /* — Footer — */
-  footer {
-    background: var(--zwart);
-    color: var(--wit);
-    padding: 4rem 0 2.5rem;
-  }
-  .footer-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--oranje);
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-  }
-  .ref-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 3rem;
-  }
+  footer { background: var(--zwart); color: var(--wit); padding: 4rem 0 2.5rem; }
+  .footer-eyebrow { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--oranje); margin-bottom: 1.5rem; font-weight: 700; }
+  .ref-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
   .ref-list span {
     background: rgba(255,255,255,0.06);
     padding: 0.5rem 1rem;
@@ -870,6 +838,149 @@
     .quote { padding: 2rem 1.6rem; }
     .quote-text { font-size: 1.1rem; }
     section.block { padding: 3.5rem 0; }
+  }
+
+  /* ─── MODAL ─── */
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(31,90,124,0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--wit);
+    max-width: 620px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 3px;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.4);
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+  }
+  .overlay.open .modal { transform: translateY(0) scale(1); }
+  .mh {
+    padding: 2rem 2.5rem 1.2rem;
+    border-bottom: 1px solid var(--grijs-2);
+    position: sticky;
+    top: 0;
+    background: var(--wit);
+    z-index: 1;
+    border-top: 4px solid var(--blauw);
+  }
+  .m-tag {
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blauw);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .m-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--zwart);
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    max-width: 90%;
+  }
+  .m-x {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
+    background: none;
+    border: none;
+    color: var(--grijs-zacht);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .m-x:hover { background: var(--grijs-1); color: var(--zwart); }
+  .mb { padding: 1.6rem 2.5rem 2.2rem; }
+  .ms { margin-bottom: 1.6rem; }
+  .ms:last-child { margin-bottom: 0; }
+  .ms-title {
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blauw);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--grijs-2);
+  }
+  .ms p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--grijs-tekst);
+    margin-bottom: 0.6rem;
+  }
+  .ms p:last-child { margin-bottom: 0; }
+  .ms ul { list-style: none; padding: 0; }
+  .ms ul li {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--grijs-tekst);
+    padding: 0.4rem 0 0.4rem 1.4rem;
+    position: relative;
+  }
+  .ms ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--oranje);
+    font-weight: 600;
+  }
+  .m-ref {
+    margin-top: 1.5rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--blauw-mist);
+    border-left: 3px solid var(--blauw);
+    font-size: 0.82rem;
+    color: var(--grijs-tekst);
+    font-style: italic;
+    line-height: 1.5;
+    border-radius: 0 2px 2px 0;
+  }
+  .m-ref::before { content: '📚 '; font-style: normal; }
+
+  /* Phase color theming for modal header */
+  .modal[data-phase="ph1"] .mh { border-top-color: var(--blauw); }
+  .modal[data-phase="ph1"] .m-tag { color: var(--blauw); }
+  .modal[data-phase="ph1"] .ms-title { color: var(--blauw); }
+  .modal[data-phase="ph1"] .m-ref { background: rgba(44,114,156,0.08); border-left-color: var(--blauw); }
+
+  .modal[data-phase="ph2"] .mh { border-top-color: var(--oranje); }
+  .modal[data-phase="ph2"] .m-tag { color: #8C6900; }
+  .modal[data-phase="ph2"] .ms-title { color: #8C6900; }
+  .modal[data-phase="ph2"] .m-ref { background: rgba(230,172,0,0.1); border-left-color: var(--oranje); }
+  .modal[data-phase="ph2"] .ms ul li::before { color: var(--oranje); }
+
+  .modal[data-phase="ph3"] .mh { border-top-color: var(--roos); }
+  .modal[data-phase="ph3"] .m-tag { color: var(--roos); }
+  .modal[data-phase="ph3"] .ms-title { color: var(--roos); }
+  .modal[data-phase="ph3"] .m-ref { background: rgba(186,69,118,0.08); border-left-color: var(--roos); }
+  .modal[data-phase="ph3"] .ms ul li::before { color: var(--roos); }
+
+  @media (max-width: 540px) {
+    .mh, .mb { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .m-title { font-size: 1.3rem; }
   }
 </style>
 </head>
@@ -911,7 +1022,7 @@
   </div>
 </div>
 
-<!-- 01 — Advies / Hypothese meten -->
+<!-- 01 — Advies -->
 <section class="block">
   <div class="wrap">
     <div class="section-head">
@@ -976,7 +1087,7 @@
   </div>
 </section>
 
-<!-- 03 — Hub-and-Spoke model -->
+<!-- 03 — Hub-and-Spoke -->
 <section class="block">
   <div class="wrap">
     <div class="section-head">
@@ -1000,18 +1111,18 @@
       </div>
     </div>
 
-    <ul class="pain-list" style="margin-top: 2.5rem; counter-reset: gainCount;">
-      <li style="counter-increment: gainCount;">Initiatieven sneller van idee naar implementatie</li>
-      <li style="counter-increment: gainCount;">Wachttijd door centrale afhankelijkheden af</li>
-      <li style="counter-increment: gainCount;">Snelle besluitvorming en innovatie</li>
-      <li style="counter-increment: gainCount;">Wendbaarheid en flexibiliteit</li>
-      <li style="counter-increment: gainCount;">Multidisciplinaire teams dicht op data en businessprocessen</li>
-      <li style="counter-increment: gainCount;">Eigenaarschap en governance via kaders</li>
+    <ul class="pain-list" style="margin-top: 2.5rem;">
+      <li>Initiatieven sneller van idee naar implementatie</li>
+      <li>Wachttijd door centrale afhankelijkheden af</li>
+      <li>Snelle besluitvorming en innovatie</li>
+      <li>Wendbaarheid en flexibiliteit</li>
+      <li>Multidisciplinaire teams dicht op data en businessprocessen</li>
+      <li>Eigenaarschap en governance via kaders</li>
     </ul>
   </div>
 </section>
 
-<!-- 04 — Limiterende randvoorwaarde -->
+<!-- 04 — Randvoorwaarden -->
 <section class="block tint-paper">
   <div class="wrap">
     <div class="section-head">
@@ -1054,112 +1165,123 @@
   </div>
 </section>
 
-<!-- 05 — Roadmap -->
-<section class="block dark">
+<!-- 05 — Roadmap (interactief, licht thema) -->
+<section class="block roadmap">
   <div class="wrap">
     <div class="section-head">
       <div class="section-num">05<span>Implementatiepad</span></div>
       <div>
         <h2><span class="accent">3 fasen</span> · 18 maanden · 3 gates</h2>
-        <p class="section-lead">Drie fasen, elk afgesloten met een formele gate. Iedere gate is een gefaseerde investeringsbeslissing — niet doorgaan tot bewijs op tafel ligt. Klik op een fase voor details, KPIs en gate-criteria.</p>
+        <p class="section-lead">Drie fasen, elk afgesloten met een formele gate als gefaseerde investeringsbeslissing. Klik op een gate, dimensie of pilot voor details, criteria en bronnen.</p>
       </div>
+    </div>
+
+    <div class="phases-intro">
+      <span>Klik om te verdiepen</span>
+      <div class="line"></div>
     </div>
 
     <div class="phases">
 
-      <div class="phase">
-        <button class="phase-head" onclick="togglePhase(this)">
-          <div>
-            <span class="ph-num">Fase 01 · Start</span>
-            <span class="ph-title">Fundament</span>
-            <span class="ph-period">Maanden 1 — 3</span>
-          </div>
-          <span class="ph-toggle">▾</span>
-        </button>
-        <div class="phase-body">
-          <div class="phase-body-inner">
-            <span class="gate">Gate 1 · Readiness check</span>
-            <h5>Organisatie</h5>
-            <p>Hub opgericht, Spoke Institutioneel benoemd.</p>
-            <h5>Governance</h5>
-            <p>Responsible AI framework operationeel.</p>
-            <h5>Enablement</h5>
-            <p>AI Readiness Scan uitgevoerd, baseline KPIs vastgelegd in Governance Charter.</p>
-            <div class="gate-criteria">
-              <strong>Gate 1 criteria:</strong> Hub bemenst, governance charter vastgesteld, baseline-meting compleet, Executive Sponsor en Product Owner benoemd.
-            </div>
-          </div>
+      <!-- FASE 1 -->
+      <div class="phase ph1">
+        <div class="ph-num">Fase 01 · Start</div>
+        <div class="ph-title">Fundament</div>
+        <div class="ph-period">Maanden 1 — 3</div>
+        <button class="gate" onclick="openM('g1')">Gate 1 · Readiness check</button>
+        <div class="dims">
+          <button class="dim" onclick="openM('f1-org')">
+            <div class="dim-tag">◇ Organisatie</div>
+            <div class="dim-main">Hub opgericht, Spoke Institutioneel benoemd</div>
+          </button>
+          <button class="dim" onclick="openM('f1-gov')">
+            <div class="dim-tag">◇ Governance</div>
+            <div class="dim-main">Responsible AI framework operationeel</div>
+          </button>
+          <button class="dim" onclick="openM('f1-enable')">
+            <div class="dim-tag">◇ Enablement</div>
+            <div class="dim-main">AI Readiness Scan uitgevoerd</div>
+          </button>
         </div>
       </div>
 
-      <div class="phase">
-        <button class="phase-head" onclick="togglePhase(this)">
-          <div>
-            <span class="ph-num">Fase 02 · Bewijs</span>
-            <span class="ph-title">Pilot</span>
-            <span class="ph-period">Maanden 4 — 9</span>
-          </div>
-          <span class="ph-toggle">▾</span>
-        </button>
-        <div class="phase-body">
-          <div class="phase-body-inner">
-            <span class="gate">Gate 2 · Value proof</span>
-            <h5>Organisatie</h5>
-            <p>Spoke Institutioneel autonoom operationeel.</p>
-            <h5>Governance</h5>
-            <p>Guardrails actief, human-in-the-loop ingericht.</p>
-            <h5>Enablement</h5>
-            <p>MLOps pipeline ingericht, eerste meetbare resultaten.</p>
-
-            <h5>Metrieke KPIs · Pilot Progress</h5>
-            <div class="kpi-row">
-              <div class="kpi-cell"><span class="kpi-v">13w</span><div class="kpi-l">Doorlooptijd</div><div class="kpi-t">target: 12w</div></div>
-              <div class="kpi-cell"><span class="kpi-v">2</span><div class="kpi-l">Approval-cycles</div><div class="kpi-t">target: 1–2</div></div>
-              <div class="kpi-cell"><span class="kpi-v">72%</span><div class="kpi-l">Adoptie</div><div class="kpi-t">target: &gt;60%</div></div>
-            </div>
-            <div class="kpi-row" style="grid-template-columns:1fr;">
-              <div class="kpi-cell"><span class="kpi-v">0</span><div class="kpi-l">Risk-incidents</div><div class="kpi-t">target: nul</div></div>
-            </div>
-
-            <div class="pilot-box">
-              <span class="pilot-tag">★ Pilot use case</span>
-              <h6>AI-gedreven Rapportage &amp; Kennissynthese</h6>
-              <p>Van uren naar minuten. Institutioneel waardeketen.</p>
-              <div class="pilot-stats">
-                <span class="pilot-stat">−60% doorlooptijd</span>
-                <span class="pilot-stat">72% adoptie</span>
-              </div>
-            </div>
-
-            <div class="gate-criteria">
-              <strong>Gate 2 criteria:</strong> Doorlooptijd aantoonbaar gereduceerd, adoptie &gt;60%, nul governance-incidents.
-            </div>
-          </div>
+      <!-- FASE 2 -->
+      <div class="phase ph2">
+        <div class="ph-num">Fase 02 · Bewijs</div>
+        <div class="ph-title">Pilot</div>
+        <div class="ph-period">Maanden 4 — 9</div>
+        <button class="gate" onclick="openM('g2')">Gate 2 · Value proof</button>
+        <div class="dims">
+          <button class="dim" onclick="openM('f2-org')">
+            <div class="dim-tag">◇ Organisatie</div>
+            <div class="dim-main">Spoke Institutioneel autonoom operationeel</div>
+          </button>
+          <button class="dim" onclick="openM('f2-gov')">
+            <div class="dim-tag">◇ Governance</div>
+            <div class="dim-main">Guardrails actief, human-in-the-loop</div>
+          </button>
+          <button class="dim" onclick="openM('f2-enable')">
+            <div class="dim-tag">◇ Enablement</div>
+            <div class="dim-main">MLOps pipeline ingericht</div>
+          </button>
         </div>
+
+        <button class="embed-card metrics" onclick="openM('md')">
+          <div class="embed-label">Metrieke KPIs · Pilot Progress</div>
+          <div class="md-grid">
+            <div class="md-metric">
+              <div class="md-metric-name">Doorlooptijd</div>
+              <div class="md-metric-progress"><div class="md-metric-progress-fill" style="width:65%"></div></div>
+              <div class="md-metric-val">13w · target 12w</div>
+            </div>
+            <div class="md-metric">
+              <div class="md-metric-name">Approval-cycles</div>
+              <div class="md-metric-progress"><div class="md-metric-progress-fill" style="width:80%"></div></div>
+              <div class="md-metric-val">2 · target 1–2</div>
+            </div>
+            <div class="md-metric">
+              <div class="md-metric-name">Adoptie</div>
+              <div class="md-metric-progress"><div class="md-metric-progress-fill" style="width:72%"></div></div>
+              <div class="md-metric-val">72% · target &gt;60%</div>
+            </div>
+            <div class="md-metric">
+              <div class="md-metric-name">Risk-incidents</div>
+              <div class="md-metric-progress"><div class="md-metric-progress-fill" style="width:0%"></div></div>
+              <div class="md-metric-val">0 · target nul</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="embed-card pilot" onclick="openM('uc')">
+          <div class="embed-label">★ Pilot use case</div>
+          <h6>AI-gedreven Rapportage &amp; Kennissynthese</h6>
+          <p>Van uren naar minuten. Institutioneel waardeketen.</p>
+          <div class="pilot-stats">
+            <span class="pilot-stat">−60% doorlooptijd</span>
+            <span class="pilot-stat">72% adoptie</span>
+          </div>
+        </button>
       </div>
 
-      <div class="phase">
-        <button class="phase-head" onclick="togglePhase(this)">
-          <div>
-            <span class="ph-num">Fase 03 · Groei</span>
-            <span class="ph-title">Schaal</span>
-            <span class="ph-period">Maanden 10 — 18</span>
-          </div>
-          <span class="ph-toggle">▾</span>
-        </button>
-        <div class="phase-body">
-          <div class="phase-body-inner">
-            <span class="gate gate-3">Gate 3 · Structurele inbedding</span>
-            <h5>Organisatie</h5>
-            <p>Dandelion-model volledig uitgerold over alle drie spokes.</p>
-            <h5>Governance</h5>
-            <p>Continue monitoring-cyclus geborgd in operating rhythm.</p>
-            <h5>Enablement</h5>
-            <p>ODV-brede AI-literacy operationeel, train-the-trainer cyclus draait.</p>
-            <div class="gate-criteria">
-              <strong>Gate 3 criteria:</strong> Drie spokes autonoom delivering, governance &lt;3% risk-rate, AI-literacy &gt;80% in spoke-teams.
-            </div>
-          </div>
+      <!-- FASE 3 -->
+      <div class="phase ph3">
+        <div class="ph-num">Fase 03 · Groei</div>
+        <div class="ph-title">Schaal</div>
+        <div class="ph-period">Maanden 10 — 18</div>
+        <button class="gate" onclick="openM('g3')">Gate 3 · Structurele inbedding</button>
+        <div class="dims">
+          <button class="dim" onclick="openM('f3-org')">
+            <div class="dim-tag">◇ Organisatie</div>
+            <div class="dim-main">Dandelion model volledig uitgerold</div>
+          </button>
+          <button class="dim" onclick="openM('f3-gov')">
+            <div class="dim-tag">◇ Governance</div>
+            <div class="dim-main">Continue monitoring cyclus geborgd</div>
+          </button>
+          <button class="dim" onclick="openM('f3-enable')">
+            <div class="dim-tag">◇ Enablement</div>
+            <div class="dim-main">ODV-brede AI-literacy operationeel</div>
+          </button>
         </div>
       </div>
 
@@ -1219,15 +1341,171 @@
   </div>
 </footer>
 
+<!-- MODAL -->
+<div class="overlay" id="ov" onclick="closeIfBg(event)">
+  <div class="modal" id="modal" data-phase="ph1">
+    <div class="mh">
+      <span class="m-tag" id="mt"></span>
+      <h2 class="m-title" id="mti"></h2>
+      <button class="m-x" onclick="closeM()" aria-label="Sluiten">×</button>
+    </div>
+    <div class="mb" id="mb"></div>
+  </div>
+</div>
+
 <script>
-  function togglePhase(btn) {
-    const phase = btn.parentElement;
-    phase.classList.toggle('open');
-  }
-  document.addEventListener('DOMContentLoaded', () => {
-    const first = document.querySelector('.phase');
-    if (first) first.classList.add('open');
+const D = {
+  'g1': { phase:'ph1', tag:'Gate 1 · Go / No-Go', title:'Readiness · Alle 3 dimensies gereed?', s:[
+    {t:'Centraal mandaat', b:[
+      'Formeel besluit: decentrale spoke mag autonoom beslissen',
+      'Approval-cycle roadmap: van 4–5 naar 1–2',
+      'Budget-mechanisme: allocatie naar spoke geregeld'
+    ]},
+    {t:'Technische infrastructuur', b:[
+      'AI-platform beschikbaar: minimale MLOps-omgeving',
+      'Tooling support: blokkeert niet',
+      'Data-ontsluiting: interne kennisbronnen beschikbaar'
+    ]},
+    {t:'Decentrale volwassenheid', b:[
+      'AI Readiness Scan: spoke team scoort ≥65%',
+      'Doorlooptijd baseline gemeten: 18–24 weken vastgesteld',
+      'Team accepteert governance-kaders'
+    ]}
+  ], ref:'Loth (2025) Stage Gate · Roos (2026) Mandaat & Metriek'},
+
+  'g2': { phase:'ph2', tag:'Gate 2 · Go / No-Go', title:'Pilot geslaagd · Value proof', s:[
+    {t:'Metrieke criteria', b:[
+      'Doorlooptijd gereduceerd: baseline 18–24w → pilot 13–15w (trend naar 12w)',
+      'Approval-cycles: van 4–5 naar 2',
+      'Adoptie: ≥60% team-gebruik na 30 dagen',
+      'Risk-incidents: nul governance-incidenten',
+      'Lessons learned: playbook klaar voor replicatie'
+    ]},
+    {t:'Waarom deze KPIs?', p:'McKinsey (2025): organisaties die AI-delivery decentraliseren zien 50% sneller time-to-market. Dit zijn de metrieken die dat bewijzen.'}
+  ], ref:'McKinsey (2025) · KPMG (2026) · Roos (2026)'},
+
+  'g3': { phase:'ph3', tag:'Gate 3 · Go / No-Go', title:'Structurele inbedding', s:[
+    {t:'Success criteria', b:[
+      'Meerdere spokes actief (Retail, Werkgever)',
+      'Doorlooptijd nu 10–12 weken standaard',
+      'Approval-cycles 1–2 (genormaliseerd)',
+      'Governance-incidents <3% (sector benchmark)',
+      'AI-literacy ODV-breed ingebouwd'
+    ]}
+  ], ref:'Loth (2025) · Laloux (2014)'},
+
+  'md': { phase:'ph2', tag:'Fase 2 · Metrics dashboard', title:'Real-time pilot progress', s:[
+    {t:'Doorlooptijd', p:'Target: 12 weken. Pilot nu op 13 weken (trend dalend). Baseline was 18–24 weken. Curve gaat de goede richting uit — bewijs dat decentralisatie werkt.'},
+    {t:'Approval-cycles', p:'Target: 1–2 cycles. Pilot nu op 2 cycles. Baseline was 4–5 cycles. Minder centrale gatekeeping, meer decentrale eigenaarschap = sneller.'},
+    {t:'Adoptie', p:'Target: >60%. Pilot op 72%. Teams willen het werken — dat is het echte succes-signaal.'},
+    {t:'Risk-incidents', p:'Target: nul. Pilot: nul. Bewijs dat minder approval-cycles NIET betekent dat governance slordig wordt. Actieve monitoring (guardrails) werkt beter dan preventieve gates.'}
+  ], ref:'KPMG (2026) · Roos (2026) Silent Drift · Loth (2025)'},
+
+  'uc': { phase:'ph2', tag:'Pilot use case', title:'AI-gedreven Rapportage &amp; Kennissynthese', s:[
+    {t:'Wat meet je?', b:[
+      'Doorlooptijd rapportage: baseline vs. pilot',
+      '−60% doorlooptijd gerealiseerd? Ja/Nee',
+      'Kwaliteitsscore output: peer review 1–5 schaal',
+      'Adoptiegraad: % team-leden actief na 30 dagen'
+    ]}
+  ], ref:'McKinsey (2025) · KPMG (2026)'},
+
+  'f1-org': { phase:'ph1', tag:'Fase 01 · Organisatie', title:'Hub & Spoke opgericht', s:[
+    {t:'Concrete acties', b:[
+      'Hub (KAI-team) formeel gepositioneerd',
+      'Spoke Institutioneel team benoemd',
+      'Mandatenmatrix vastgesteld',
+      'Baseline: doorlooptijd nu gemeten (18–24 weken)',
+      'Baseline: approval-cycles geteld (4–5 cycles)'
+    ]}
+  ], ref:'Mintzberg (1979) · McKinsey (2017)'},
+
+  'f1-gov': { phase:'ph1', tag:'Fase 01 · Governance', title:'Responsible AI framework', s:[
+    {t:'Wat', b:[
+      'Achmea AI Policy → operationele spelregels',
+      'EU AI Act risicocategorisering',
+      'Responsible AI checklist per use-case',
+      'Escalatiematrix: wat mag spoke autonoom?'
+    ]}
+  ], ref:'Dom (2026) · EU AI Act'},
+
+  'f1-enable': { phase:'ph1', tag:'Fase 01 · Enablement', title:'AI Readiness Scan', s:[
+    {t:'Wat', b:[
+      'Readiness Score gemeten voor Institutioneel',
+      'Target: ≥65%',
+      'Tooling-inventarisatie',
+      'Data-literacy baseline vastgesteld'
+    ]}
+  ], ref:'Loth (2025)'},
+
+  'f2-org': { phase:'ph2', tag:'Fase 02 · Organisatie', title:'Spoke autonoom operationeel', s:[
+    {t:'Success metric', p:'Approval-cycles daalt van 4–5 naar 2. Dit is het bewijs dat decentralisatie werkt.'}
+  ], ref:'Roos (2026)'},
+
+  'f2-gov': { phase:'ph2', tag:'Fase 02 · Governance', title:'Guardrails &amp; monitoring', s:[
+    {t:'Concrete', b:[
+      'Human-in-the-loop in workflow',
+      'Bias-monitoring dashboard',
+      'Model drift detection wekelijks',
+      'Override-rate als KPI'
+    ]}
+  ], ref:'Dom (2026) · Roos (2026) Silent Drift'},
+
+  'f2-enable': { phase:'ph2', tag:'Fase 02 · Enablement', title:'MLOps pipeline', s:[
+    {t:'Concrete', b:[
+      'Deployment, monitoring, retraining',
+      'AI-literacy training',
+      'Data-governance',
+      'Feedback-mechanisme'
+    ]}
+  ], ref:'Gartner (2022) MLOps'},
+
+  'f3-org': { phase:'ph3', tag:'Fase 03 · Organisatie', title:'Dandelion model volledig', s:[
+    {t:'Success metric', p:'Alle 3 spokes actief. Doorlooptijd nu 10–12 weken standaard. Approval-cycles 1–2. Dit is structurele transformatie.'}
+  ], ref:'Gartner (2022) · McKinsey (2017)'},
+
+  'f3-gov': { phase:'ph3', tag:'Fase 03 · Governance', title:'Continue monitoring', s:[
+    {t:'Concrete', b:[
+      'CCP-equivalent: centrale validatie vóór productiename',
+      'Retraining op basis van drift-signalen',
+      'Incident-register centraal',
+      'Jaarlijkse responsible AI audit'
+    ]}
+  ], ref:'KPMG (2026) · EU AI Act'},
+
+  'f3-enable': { phase:'ph3', tag:'Fase 03 · Enablement', title:'ODV-brede AI-literacy', s:[
+    {t:'Concrete', b:[
+      'Training-programma voor alle ODV',
+      'Playbooks beschikbaar',
+      'Communities of Practice',
+      'T-shaped professionals'
+    ]}
+  ], ref:'Van Benten (2026) · Loth (2025)'}
+};
+
+function openM(k){
+  const d = D[k]; if(!d) return;
+  document.getElementById('modal').dataset.phase = d.phase || 'ph1';
+  document.getElementById('mt').textContent = d.tag;
+  document.getElementById('mti').innerHTML = d.title;
+  let h = '';
+  d.s.forEach(s => {
+    h += `<div class="ms"><div class="ms-title">${s.t}</div>`;
+    if (s.p) h += `<p>${s.p}</p>`;
+    if (s.b) { h += `<ul>`; s.b.forEach(b => h += `<li>${b}</li>`); h += `</ul>`; }
+    h += `</div>`;
   });
+  if (d.ref) h += `<div class="m-ref">${d.ref}</div>`;
+  document.getElementById('mb').innerHTML = h;
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeM(){
+  document.getElementById('ov').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeIfBg(e){ if (e.target === document.getElementById('ov')) closeM(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); });
 </script>
 
 </body>
