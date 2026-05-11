@@ -2339,41 +2339,60 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); })
 })();
 
 /* ───── Presentatie-modus (auto-tour) ───── */
-// Tour-dwells gekalibreerd op audio van 137,6s (pitch.mp4). Audio drijft het einde.
-// Geen modals: alleen highlight + caption. De gate-/treden-modals blijven beschikbaar
-// voor handmatig klikken na afloop, maar openen niet automatisch tijdens de tour.
+// Tour-dwells gekalibreerd op pitch.mp4 (137,6s) + pitch2.mp4 (28,65s, Lynn re-recorded).
+// pitch.mp4 stopt op 1:49 (eind Jitske); pitch2.mp4 neemt over voor Lynn.
+// Geen modals: alleen highlight + caption.
 const TOUR = [
-  // ─── 00:00 — 00:22 · RENÉ — opening + knelpunt ───
-  { sel: 'header.hero',                            dwell: 5500,  label: 'Introductie' },
-  { sel: '.these',                                 dwell: 4500,  label: 'Centrale these' },
+  // ─── 00:00 — 00:21 · RENÉ — opening + knelpunt ───
+  { sel: 'header.hero',                            dwell: 5000,  label: 'Introductie' },
+  { sel: '.these',                                 dwell: 4000,  label: 'Centrale these' },
   { sel: 'section.block:nth-of-type(1)',           dwell: 3500,  label: '01 · Hypothese meetbaar maken' },
   { sel: 'section.block:nth-of-type(2)',           dwell: 8500,  label: '02 · Knelpunt' },
-  // ─── 00:22 — 01:07 · NIENKE — hub-and-spoke (45s) ───
-  { sel: 'section.block:nth-of-type(3)',           dwell: 45000, label: '03 · Multiple Hub-and-Spoke' },
-  // ─── 01:07 — 01:49 · JITSKE — roadmap + 3 fases (42s, geen modals, geen sub-gates) ───
+  // ─── 00:21 — 01:04 · NIENKE — hub-and-spoke (43s) ───
+  { sel: 'section.block:nth-of-type(3)',           dwell: 43000, label: '03 · Multiple Hub-and-Spoke' },
+  // ─── 01:04 — 01:49 · JITSKE — roadmap + 3 fases (45s, geen modals) ───
   { sel: '.block.roadmap', dwell: 14000, label: '05 · 3 fasen · 18 maanden' },
-  { sel: '.phase.ph1',     dwell: 8000,  label: 'Fase 1 · Oriëntatie &amp; Retentie' },
-  { sel: '.phase.ph2',     dwell: 11000, label: 'Fase 2 · Experiment &amp; Betekenis' },
-  { sel: '.phase.ph3',     dwell: 9000,  label: 'Fase 3 · Verankeren &amp; Versnellen' },
-  // ─── 01:49 — 02:17 · LYNN — resultaat ───
-  { sel: '.block.resultaat',                       dwell: 28000, label: '06 · Beoogd resultaat' }
+  { sel: '.phase.ph1',     dwell: 9000,  label: 'Fase 1 · Oriëntatie &amp; Retentie' },
+  { sel: '.phase.ph2',     dwell: 12000, label: 'Fase 2 · Experiment &amp; Betekenis' },
+  { sel: '.phase.ph3',     dwell: 10000, label: 'Fase 3 · Verankeren &amp; Versnellen' },
+  // ─── 01:49 — 02:18 · LYNN — resultaat (nieuwe audio: pitch2.mp4, 28,65s) ───
+  { sel: '.block.resultaat',                       dwell: 28650, label: '06 · Beoogd resultaat' }
 ];
 
 let TOUR_TIMER = null;
 let TOUR_ABORT = false;
-const PITCH_AUDIO = new Audio('pitch.mp4');
-PITCH_AUDIO.preload = 'auto';
-// Audio is de bron-van-waarheid: als audio eindigt, stopt de tour mee.
-PITCH_AUDIO.addEventListener('ended', () => { if (!TOUR_ABORT) finishTour(); });
+// pitch.mp4 = René + Nienke + Jitske (eind van Jitske op 1:49 = 109s)
+// pitch2.mp4 = Lynn (re-recorded, 28,65s) — vervangt Lynn's stuk in pitch.mp4
+const PITCH_AUDIO  = new Audio('pitch.mp4');
+const PITCH_AUDIO2 = new Audio('pitch2.mp4');
+PITCH_AUDIO.preload  = 'auto';
+PITCH_AUDIO2.preload = 'auto';
+const SWITCH_AT_SEC = 109; // hier eindigt Jitske in pitch.mp4 — Lynn's oude audio wordt vanaf hier overgeslagen.
+let AUDIO_SWITCHED = false;
+
+PITCH_AUDIO.addEventListener('timeupdate', () => {
+  if (!AUDIO_SWITCHED && PITCH_AUDIO.currentTime >= SWITCH_AT_SEC) {
+    AUDIO_SWITCHED = true;
+    PITCH_AUDIO.pause();
+    PITCH_AUDIO2.currentTime = 0;
+    PITCH_AUDIO2.play().catch(() => {});
+  }
+});
+// pitch2.mp4 eindigt → tour klaar.
+PITCH_AUDIO2.addEventListener('ended', () => { if (!TOUR_ABORT) finishTour(); });
 
 function startTour() {
   TOUR_ABORT = false;
+  AUDIO_SWITCHED = false;
   document.body.classList.add('presenting');
   const totalDwell = TOUR.reduce((a, s) => a + s.dwell, 0);
   let elapsed = 0;
 
-  // Start audio mee als pitch.mp3 beschikbaar is. Faalt stil als het bestand er nog niet is.
-  PITCH_AUDIO.currentTime = 0;
+  // Reset beide audio-bronnen.
+  PITCH_AUDIO.currentTime  = 0;
+  PITCH_AUDIO2.pause();
+  PITCH_AUDIO2.currentTime = 0;
+
   PITCH_AUDIO.play().then(() => {
     document.body.classList.add('with-audio');
   }).catch(() => {
@@ -2424,6 +2443,9 @@ function finishTour() {
   closeM();
   PITCH_AUDIO.pause();
   PITCH_AUDIO.currentTime = 0;
+  PITCH_AUDIO2.pause();
+  PITCH_AUDIO2.currentTime = 0;
+  AUDIO_SWITCHED = false;
   document.body.classList.remove('presenting', 'with-audio');
   document.querySelectorAll('.present-focus').forEach(e => e.classList.remove('present-focus'));
   document.getElementById('progress-bar').style.width = '0%';
