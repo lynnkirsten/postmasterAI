@@ -2350,13 +2350,11 @@ const TOUR = [
   { sel: 'section.block:nth-of-type(2)',           dwell: 8500,  label: '02 · Knelpunt' },
   // ─── 00:22 — 01:07 · NIENKE — hub-and-spoke (45s) ───
   { sel: 'section.block:nth-of-type(3)',           dwell: 45000, label: '03 · Multiple Hub-and-Spoke' },
-  // ─── 01:07 — 01:49 · JITSKE — roadmap + gates (42s, zonder modals) ───
-  { sel: '.block.roadmap',                         dwell: 4000,  label: '05 · 3 fasen · 18 maanden' },
-  { sel: '.phase.ph1', dwell: 6000,  label: 'Gate 1a · Scope &amp; Charter' },
-  { sel: '.phase.ph1', dwell: 6000,  label: 'Gate 1b · Data readiness' },
-  { sel: '.phase.ph2', dwell: 8000,  label: 'Gate 2 · Value proof &amp; scale-readiness' },
-  { sel: '.phase.ph2', dwell: 6000,  label: '5-elementen-template' },
-  { sel: '.phase.ph3', dwell: 12000, label: 'Gate 3 · Structurele inbedding' },
+  // ─── 01:07 — 01:49 · JITSKE — roadmap + 3 fases (42s, geen modals, geen sub-gates) ───
+  { sel: '.block.roadmap', dwell: 14000, label: '05 · 3 fasen · 18 maanden' },
+  { sel: '.phase.ph1',     dwell: 8000,  label: 'Fase 1 · Oriëntatie &amp; Retentie' },
+  { sel: '.phase.ph2',     dwell: 11000, label: 'Fase 2 · Experiment &amp; Betekenis' },
+  { sel: '.phase.ph3',     dwell: 9000,  label: 'Fase 3 · Verankeren &amp; Versnellen' },
   // ─── 01:49 — 02:17 · LYNN — resultaat ───
   { sel: '.block.resultaat',                       dwell: 28000, label: '06 · Beoogd resultaat' }
 ];
