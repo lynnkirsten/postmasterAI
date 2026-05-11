@@ -2340,21 +2340,23 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); })
 
 /* ───── Presentatie-modus (auto-tour) ───── */
 // Tour-dwells gekalibreerd op audio van 137,6s (pitch.mp4). Audio drijft het einde.
+// Geen modals: alleen highlight + caption. De gate-/treden-modals blijven beschikbaar
+// voor handmatig klikken na afloop, maar openen niet automatisch tijdens de tour.
 const TOUR = [
   // ─── 00:00 — 00:22 · RENÉ — opening + knelpunt ───
   { sel: 'header.hero',                            dwell: 5500,  label: 'Introductie' },
   { sel: '.these',                                 dwell: 4500,  label: 'Centrale these' },
   { sel: 'section.block:nth-of-type(1)',           dwell: 3500,  label: '01 · Hypothese meetbaar maken' },
   { sel: 'section.block:nth-of-type(2)',           dwell: 8500,  label: '02 · Knelpunt' },
-  // ─── 00:22 — 00:54 · NIENKE — hub-and-spoke ───
-  { sel: 'section.block:nth-of-type(3)',           dwell: 32000, label: '03 · Multiple Hub-and-Spoke' },
-  // ─── 00:54 — 01:49 · JITSKE — roadmap + gates ───
+  // ─── 00:22 — 01:07 · NIENKE — hub-and-spoke (45s) ───
+  { sel: 'section.block:nth-of-type(3)',           dwell: 45000, label: '03 · Multiple Hub-and-Spoke' },
+  // ─── 01:07 — 01:49 · JITSKE — roadmap + gates (42s, zonder modals) ───
   { sel: '.block.roadmap',                         dwell: 4000,  label: '05 · 3 fasen · 18 maanden' },
-  { sel: '.phase.ph1', dwell: 9000,  label: 'Gate 1a · Scope &amp; Charter', modal: 'g1a' },
-  { sel: '.phase.ph1', dwell: 9000,  label: 'Gate 1b · Data readiness',     modal: 'g1b' },
-  { sel: '.phase.ph2', dwell: 11000, label: 'Gate 2 · Value proof &amp; scale-readiness', modal: 'g2'  },
-  { sel: '.phase.ph2', dwell: 8000,  label: '5-elementen-template',         modal: 'md'  },
-  { sel: '.phase.ph3', dwell: 14000, label: 'Gate 3 · Structurele inbedding', modal: 'g3' },
+  { sel: '.phase.ph1', dwell: 6000,  label: 'Gate 1a · Scope &amp; Charter' },
+  { sel: '.phase.ph1', dwell: 6000,  label: 'Gate 1b · Data readiness' },
+  { sel: '.phase.ph2', dwell: 8000,  label: 'Gate 2 · Value proof &amp; scale-readiness' },
+  { sel: '.phase.ph2', dwell: 6000,  label: '5-elementen-template' },
+  { sel: '.phase.ph3', dwell: 12000, label: 'Gate 3 · Structurele inbedding' },
   // ─── 01:49 — 02:17 · LYNN — resultaat ───
   { sel: '.block.resultaat',                       dwell: 28000, label: '06 · Beoogd resultaat' }
 ];
