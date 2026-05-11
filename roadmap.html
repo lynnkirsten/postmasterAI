@@ -2341,22 +2341,22 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); })
 /* ───── Presentatie-modus (auto-tour) ───── */
 // Tour-dwells gekalibreerd op audio van 137,6s (pitch.mp4). Audio drijft het einde.
 const TOUR = [
-  // ─── 00:00 — 00:30 · RENÉ — opening + knelpunt ───
-  { sel: 'header.hero',                            dwell: 7500,  label: 'Introductie' },
-  { sel: '.these',                                 dwell: 6000,  label: 'Centrale these' },
-  { sel: 'section.block:nth-of-type(1)',           dwell: 4500,  label: '01 · Hypothese meetbaar maken' },
-  { sel: 'section.block:nth-of-type(2)',           dwell: 12500, label: '02 · Knelpunt' },
-  // ─── 00:30 — 01:04 · NIENKE — hub-and-spoke ───
-  { sel: 'section.block:nth-of-type(3)',           dwell: 33500, label: '03 · Multiple Hub-and-Spoke' },
-  // ─── 01:04 — 01:46 · JITSKE — roadmap + gates ───
-  { sel: '.block.roadmap',                         dwell: 4500,  label: '05 · 3 fasen · 18 maanden' },
-  { sel: '.phase.ph1', dwell: 7500, label: 'Gate 1a · Scope &amp; Charter', modal: 'g1a' },
-  { sel: '.phase.ph1', dwell: 7500, label: 'Gate 1b · Data readiness',     modal: 'g1b' },
-  { sel: '.phase.ph2', dwell: 9500, label: 'Gate 2 · Value proof &amp; scale-readiness', modal: 'g2'  },
-  { sel: '.phase.ph2', dwell: 6000, label: '5-elementen-template',         modal: 'md'  },
-  { sel: '.phase.ph3', dwell: 7500, label: 'Gate 3 · Structurele inbedding', modal: 'g3' },
-  // ─── 01:46 — 02:17 · LYNN — resultaat ───
-  { sel: '.block.resultaat',                       dwell: 31000, label: '06 · Beoogd resultaat' }
+  // ─── 00:00 — 00:22 · RENÉ — opening + knelpunt ───
+  { sel: 'header.hero',                            dwell: 5500,  label: 'Introductie' },
+  { sel: '.these',                                 dwell: 4500,  label: 'Centrale these' },
+  { sel: 'section.block:nth-of-type(1)',           dwell: 3500,  label: '01 · Hypothese meetbaar maken' },
+  { sel: 'section.block:nth-of-type(2)',           dwell: 8500,  label: '02 · Knelpunt' },
+  // ─── 00:22 — 00:54 · NIENKE — hub-and-spoke ───
+  { sel: 'section.block:nth-of-type(3)',           dwell: 32000, label: '03 · Multiple Hub-and-Spoke' },
+  // ─── 00:54 — 01:49 · JITSKE — roadmap + gates ───
+  { sel: '.block.roadmap',                         dwell: 4000,  label: '05 · 3 fasen · 18 maanden' },
+  { sel: '.phase.ph1', dwell: 9000,  label: 'Gate 1a · Scope &amp; Charter', modal: 'g1a' },
+  { sel: '.phase.ph1', dwell: 9000,  label: 'Gate 1b · Data readiness',     modal: 'g1b' },
+  { sel: '.phase.ph2', dwell: 11000, label: 'Gate 2 · Value proof &amp; scale-readiness', modal: 'g2'  },
+  { sel: '.phase.ph2', dwell: 8000,  label: '5-elementen-template',         modal: 'md'  },
+  { sel: '.phase.ph3', dwell: 14000, label: 'Gate 3 · Structurele inbedding', modal: 'g3' },
+  // ─── 01:49 — 02:17 · LYNN — resultaat ───
+  { sel: '.block.resultaat',                       dwell: 28000, label: '06 · Beoogd resultaat' }
 ];
 
 let TOUR_TIMER = null;
