@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AI Delivery Roadmap — Achmea ODV Hub-and-Spoke Model</title>
+<title>AI Delivery Roadmap · Achmea ODV Hub-and-Spoke Model</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital, wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
     /* Achmea blauwen */
@@ -373,6 +373,148 @@
   .hs-card p strong { color: var(--zwart); font-weight: 600; }
   @media (max-width: 720px) { .hs-visual { grid-template-columns: 1fr; } }
 
+  /* Twee-laags hub-spoke visualisatie */
+  .hs-layers {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .hs-layer {
+    background: var(--wit);
+    border: 1px solid var(--grijs-2);
+    border-radius: 2px;
+    padding: 1.8rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hs-layer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+  }
+  .hs-layer.tech::before { background: var(--blauw); }
+  .hs-layer.func::before { background: var(--groen); }
+  .hs-layer-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .hs-layer-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--blauw);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .hs-layer.func .hs-layer-num { color: var(--groen); }
+  .hs-layer-tag {
+    font-size: 0.62rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--blauw);
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--blauw);
+    border-radius: 2px;
+  }
+  .hs-layer.func .hs-layer-tag { color: var(--groen); border-color: var(--groen); }
+  .hs-layer h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    color: var(--zwart);
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+  }
+  .hs-layer-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--grijs-zacht);
+    margin-bottom: 1.2rem;
+  }
+  .hs-layer-desc strong { color: var(--zwart); font-weight: 600; }
+  .hs-flow {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    border-top: 1px dashed var(--grijs-2);
+    margin-top: 0.5rem;
+  }
+  .hs-node {
+    background: var(--paper);
+    border: 1px solid var(--grijs-2);
+    padding: 0.7rem 1rem;
+    border-radius: 2px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--grijs-tekst);
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+  .hs-node.is-hub {
+    background: var(--blauw);
+    color: var(--wit);
+    border-color: var(--blauw);
+    font-weight: 600;
+  }
+  .hs-layer.func .hs-node.is-hub {
+    background: var(--groen);
+    border-color: var(--groen);
+  }
+  .hs-node .node-tag {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+  }
+  .hs-arrow {
+    color: var(--oranje);
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .hs-spokes {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .hs-spokes .hs-node {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+  .hs-sub-flow {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--grijs-2);
+    font-size: 0.82rem;
+    color: var(--grijs-zacht);
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .hs-sub-flow strong {
+    color: var(--blauw);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .hs-layer.func .hs-sub-flow strong { color: var(--groen); }
+  @media (max-width: 720px) {
+    .hs-flow { flex-direction: column; align-items: stretch; }
+    .hs-arrow { transform: rotate(90deg); text-align: center; }
+    .hs-spokes { flex-direction: column; }
+  }
+
   /* — Advies grid — */
   .advies-grid {
     display: grid;
@@ -543,7 +685,7 @@
     color: var(--grijs-tekst);
   }
   .limit-card li::before {
-    content: '—';
+    content: '\2014';
     position: absolute;
     left: 0;
     color: var(--oranje);
@@ -1247,7 +1389,7 @@
   <div class="wrap hero-inner">
     <div class="hero-eyebrow">AI Transformation · Hub-and-Spoke</div>
     <h1>Van centrale bottleneck naar <em>decentrale slagkracht</em>.</h1>
-    <p class="hero-sub">Een gefaseerd 18-maands transformatiepad voor Achmea ODV — centrale kaders, autonome spokes, meetbare gates.</p>
+    <p class="hero-sub">Een gefaseerd 18-maands transformatiepad voor Achmea ODV met centrale kaders, autonome spokes en meetbare gates.</p>
     <div class="hero-meta">
       <div>
         <span class="meta-label">Auteurs</span>
@@ -1279,7 +1421,7 @@
       <div class="section-num">01<span>Advies</span></div>
       <div>
         <h2><span class="accent">Hypothese</span> meetbaar maken</h2>
-        <p class="section-lead">Voor deze roadmap zijn concrete meetwaarden nog niet bepaald. In <strong>Fase 1</strong> moet Achmea ODV de volgende dimensies vastleggen — zonder baseline geen gates, zonder gates geen schaalbeslissing.</p>
+        <p class="section-lead">Voor deze roadmap zijn concrete meetwaarden nog niet bepaald. In <strong>Fase 1</strong> legt Achmea ODV de volgende dimensies vast. Zonder baseline geen gates, zonder gates geen schaalbeslissing.</p>
       </div>
     </div>
 
@@ -1290,23 +1432,23 @@
       </div>
       <div class="advies-card">
         <h4>Target</h4>
-        <p>Decentraal model &mdash; richtbenchmark McKinsey: <strong>6&ndash;12 weken per pilot</strong>. Concrete waarde voor ODV vastgesteld in Charter (Fase 1a).</p>
+        <p>Decentraal model, richtbenchmark McKinsey: <strong>6&ndash;12 weken per pilot</strong>. Concrete waarde voor ODV vastgesteld in Charter (Fase 1a).</p>
       </div>
       <div class="advies-card">
         <h4>Voordeel</h4>
-        <p><strong>40&ndash;70% productiviteitsverbetering</strong> in decentrale modellen volgens McKinsey-benchmark &mdash; ambitieniveau, niet target.</p>
+        <p><strong>40&ndash;70% productiviteitsverbetering</strong> in decentrale modellen volgens McKinsey-benchmark, ambitieniveau, niet target.</p>
       </div>
       <div class="advies-card">
         <h4>Format</h4>
-        <p><strong>Roos (2026) Beslisladder</strong>: 5 Treden, 3 Gates, 5-elementen-template per metriek. <em>Wie · welke data · drempelvorm · kill-criterium · heroverwegingsmoment</em> &mdash; zie roadmap §05.</p>
+        <p><strong>Roos (2026) Beslisladder</strong>: 5 Treden, 3 Gates, 5-elementen-template per metriek. <em>Wie · welke data · drempelvorm · kill-criterium · heroverwegingsmoment</em>, zie roadmap §05.</p>
       </div>
     </div>
 
     <div class="sources">
-      <p><span class="arrow">↗</span><strong>Roos (2026)</strong> · <em>Business Case van Transformatie</em> &mdash; Beslisladder met 5 Treden en 5-elementen-gate-template (p.18, p.20).</p>
-      <p><span class="arrow">↗</span><strong>Loth (2025)</strong> · <em>AI Roadmapping &amp; Readiness</em> &mdash; Stage gate model + Readiness Scan op 4-Fundament (Data, Tech, Processen, Cultuur).</p>
-      <p><span class="arrow">↗</span><a class="source-link" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener">McKinsey (2026) · <em>Agentic AI Governance</em></a> &mdash; pilots bound to 6&ndash;12 weeks.</p>
-      <p><span class="arrow">↗</span><a class="source-link" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener">McKinsey (2026) · <em>AI Transformation</em></a> &mdash; 40&ndash;70% productivity improvement in decentralized models.</p>
+      <p><span class="arrow">↗</span><strong>Roos (2026)</strong> · <em>Business Case van Transformatie</em>, Beslisladder met 5 Treden en 5-elementen-gate-template (p.18, p.20).</p>
+      <p><span class="arrow">↗</span><strong>Loth (2025)</strong> · <em>AI Roadmapping &amp; Readiness</em>, Stage gate model + Readiness Scan op 4-Fundament (Data, Tech, Processen, Cultuur).</p>
+      <p><span class="arrow">↗</span><a class="source-link" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener">McKinsey (2026) · <em>Agentic AI Governance</em></a>, pilots bound to 6&ndash;12 weeks.</p>
+      <p><span class="arrow">↗</span><a class="source-link" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener">McKinsey (2026) · <em>AI Transformation</em></a>,40&ndash;70% productivity improvement in decentralized models.</p>
     </div>
   </div>
 </section>
@@ -1334,13 +1476,13 @@
     <div class="quote">
       <div class="quote-label">ODV intern signaal</div>
       <p class="quote-text">Delivery is vastgelopen. De stap van algemene hulpmiddelen naar werkproces-gerichte oplossingen verloopt te traag. Discussies kantelen naar wie iets mag in plaats van naar doel en waarde.</p>
-      <p class="quote-source">— Semigestructureerde interviews · Directeur IT ODV en Teamcoördinator IB · 2026</p>
+      <p class="quote-source">Bron: semigestructureerde interviews · Directeur IT ODV en Teamcoördinator IB · 2026</p>
     </div>
 
     <div class="duiding">
       <div class="duiding-label">Theoretische duiding</div>
-      <p><strong>Stacey (1996)</strong> — bij toenemende complexiteit verliezen hiërarchische sturingsmodellen hun effectiviteit. <strong>Mintzberg (1979)</strong> beschrijft <em>adhocracy</em>: tijdelijke, decentrale samenwerkingsvormen passen beter in complexe contexten. <strong>Loorbach (2010)</strong> ziet dit als systemisch transitievraagstuk &mdash; oude routines remmen verandering en doorbreken vraagt fundamentele transitie.</p>
-      <p><strong>Ykema (2026)</strong> typeert dit als <em>"accountability gap"</em>: zonder expliciet beleggen <em>wie</em> verantwoordelijk is &mdash; medewerker, leidinggevende of leverancier &mdash; verschuift de discussie automatisch naar "wie iets mag" in plaats van "wat wel werkt". Dat is precies wat we hier zien.</p>
+      <p>Bij toenemende complexiteit verliezen hiërarchische sturingsmodellen hun effectiviteit, stelt <strong>Stacey (1996)</strong>. <strong>Mintzberg (1979)</strong> beschrijft <em>adhocracy</em>: tijdelijke, decentrale samenwerkingsvormen passen beter in complexe contexten. <strong>Loorbach (2010)</strong> ziet dit als systemisch transitievraagstuk: oude routines remmen verandering, en doorbreken vraagt een fundamentele transitie.</p>
+      <p><strong>Ykema (2026)</strong> typeert dit als <em>"accountability gap"</em>: zonder expliciet beleggen <em>wie</em> verantwoordelijk is (medewerker, leidinggevende of leverancier), verschuift de discussie automatisch naar "wie iets mag" in plaats van "wat wel werkt". Dat is precies wat we hier zien.</p>
       <p><strong>Roos (2026, AI Achmea)</strong> herkent in Achmea zeven concrete belemmeringen die dit knelpunt voeden: beheers-angst, trainingsmoeheid, tool-overbelasting, subjectiviteitsvertekening, gebrek aan stimulans, ontbreken van gamification, en hidden resistance.</p>
     </div>
   </div>
@@ -1352,22 +1494,62 @@
     <div class="section-head">
       <div class="section-num">03<span>Nieuw model</span></div>
       <div>
-        <h2><span class="accent">Centrale kaders</span>, decentrale uitvoering</h2>
-        <p class="section-lead">Het Hub-and-Spoke model verdeelt verantwoordelijkheden bewust. De Hub stelt governance-kaders en enablement. Spokes voeren zelfstandig uit binnen die kaders — minder wachttijden, meer eigenaarschap.</p>
+        <h2><span class="accent">Multiple Hub-and-Spoke</span> in twee lagen</h2>
+        <p class="section-lead">Achmea is van nature een verzameling autonome domeinen. Het Hub-and-Spoke model past daar in twee lagen op: een technische laag die het AI team Achmea verbindt aan de business-onderdelen, en een functionele laag waarin ODV zelf hub wordt voor de drie waardestromen.</p>
       </div>
     </div>
 
-    <div class="hs-visual">
-      <div class="hs-card hub">
-        <span class="hs-tag">Hub · Center of Enablement</span>
-        <h4>Het KAI-team</h4>
-        <p>Governance-kaders, gedeelde standaarden, centrale monitoring. <strong>Faciliteert zonder te blokkeren.</strong> Stelt het speelveld vast waarbinnen spokes vrij kunnen bewegen.</p>
+    <div class="hs-layers">
+
+      <div class="hs-layer tech">
+        <div class="hs-layer-head">
+          <span class="hs-layer-num">01</span>
+          <span class="hs-layer-tag">Technische laag</span>
+          <h4>AI team Achmea als centrale hub voor de business-onderdelen</h4>
+        </div>
+        <p class="hs-layer-desc">Het AI team Achmea bepaalt de centrale kaders, gedeelde standaarden en gemeenschappelijke infrastructuur. Elk business-onderdeel (ODV, S&amp;I, Zorg, SAR) is in deze laag een <strong>sub-hub</strong> die de centrale kaders vertaalt naar een eigen pakket aan AI-toepassingen voor de eigen context.</p>
+        <div class="hs-flow">
+          <div class="hs-node is-hub">
+            <span class="node-tag">Centrale hub</span>
+            AI team Achmea
+          </div>
+          <span class="hs-arrow">&rsaquo;</span>
+          <div class="hs-spokes">
+            <div class="hs-node"><span class="node-tag">Sub-hub</span>ODV</div>
+            <div class="hs-node"><span class="node-tag">Sub-hub</span>S&amp;I</div>
+            <div class="hs-node"><span class="node-tag">Sub-hub</span>Zorg</div>
+            <div class="hs-node"><span class="node-tag">Sub-hub</span>SAR</div>
+          </div>
+        </div>
+        <div class="hs-sub-flow">
+          De centrale hub levert <strong>governance, platform, MLOps, gedeelde modellen en monitoring</strong>. De sub-hub vertaalt die set naar werkbare bouwblokken voor de eigen waardestromen.
+        </div>
       </div>
-      <div class="hs-card spoke">
-        <span class="hs-tag">Spokes · Business domains</span>
-        <h4>Retail · Werkgever · Institutioneel</h4>
-        <p>Autonoom ownership over AI-use cases. <strong>Snellere besluitvorming dicht op de business.</strong> Multidisciplinaire teams op data en werkproces.</p>
+
+      <div class="hs-layer func">
+        <div class="hs-layer-head">
+          <span class="hs-layer-num">02</span>
+          <span class="hs-layer-tag">Functionele laag</span>
+          <h4>ODV als hub voor de drie waardestromen</h4>
+        </div>
+        <p class="hs-layer-desc">Binnen ODV is de sub-hub op zijn beurt de hub voor drie waardestromen. Die werken autonoom aan AI-use cases dicht op de business. Ze beschikken niet over een eigen technische stack, maar gebruiken de tooling en expertise van de ODV-hub.</p>
+        <div class="hs-flow">
+          <div class="hs-node is-hub">
+            <span class="node-tag">Functionele hub</span>
+            ODV
+          </div>
+          <span class="hs-arrow">&rsaquo;</span>
+          <div class="hs-spokes">
+            <div class="hs-node"><span class="node-tag">Spoke</span>Retail</div>
+            <div class="hs-node"><span class="node-tag">Spoke</span>Werkgever</div>
+            <div class="hs-node"><span class="node-tag">Spoke</span>Institutioneel</div>
+          </div>
+        </div>
+        <div class="hs-sub-flow">
+          De spoke heeft <strong>autonoom eigenaarschap over AI-use cases</strong> binnen de eigen waardestroom. Multidisciplinaire teams werken in korte iteraties dicht op data en werkproces, binnen de kaders die centraal en in ODV zijn afgesproken.
+        </div>
       </div>
+
     </div>
 
     <ul class="pain-list" style="margin-top: 2.5rem;">
@@ -1380,10 +1562,10 @@
     </ul>
 
     <div class="sources">
-      <p><span class="arrow">↗</span><strong>Mintzberg (1979)</strong> · <em>adhocracy</em> &mdash; decentralisatie en tijdelijke, flexibele samenwerkingsvormen in complexe omgevingen.</p>
-      <p><span class="arrow">↗</span><strong>Laloux (2014)</strong> · <em>Reinventing Organizations</em> &mdash; evolutie naar autonomie, zingeving en zelfsturing als antwoord op AI-complexiteit.</p>
-      <p><span class="arrow">↗</span><strong>McKinsey (2017)</strong> · <em>Operating model frameworks</em> &mdash; gedistribueerde modellen leveren snelheid en flexibiliteit in dynamische markten.</p>
-      <p><span class="arrow">↗</span><strong>Harvard Business Review (2021)</strong> &mdash; centraal "Center of Enablement" met faciliterende rol; productgerichte teams met end-to-end eigenaarschap.</p>
+      <p><span class="arrow">↗</span><strong>Mintzberg (1979)</strong> · <em>adhocracy</em>, decentralisatie en tijdelijke, flexibele samenwerkingsvormen in complexe omgevingen.</p>
+      <p><span class="arrow">↗</span><strong>Laloux (2014)</strong> · <em>Reinventing Organizations</em>, evolutie naar autonomie, zingeving en zelfsturing als antwoord op AI-complexiteit.</p>
+      <p><span class="arrow">↗</span><strong>McKinsey (2017)</strong> · <em>Operating model frameworks</em>, gedistribueerde modellen leveren snelheid en flexibiliteit in dynamische markten.</p>
+      <p><span class="arrow">↗</span><strong>Harvard Business Review (2021)</strong>, centraal "Center of Enablement" met faciliterende rol; productgerichte teams met end-to-end eigenaarschap.</p>
     </div>
   </div>
 </section>
@@ -1395,7 +1577,7 @@
       <div class="section-num">04<span>Randvoorwaarden</span></div>
       <div>
         <h2>Alle <span class="accent">drie dimensies</span> tegelijk</h2>
-        <p class="section-lead">Transformatie slaagt alleen als centraal mandaat, technisch fundament én decentrale volwassenheid gelijktijdig op niveau zijn. Eén dimensie achter — de hele beweging stagneert.</p>
+        <p class="section-lead">Transformatie slaagt alleen als centraal mandaat, technisch fundament én decentrale volwassenheid gelijktijdig op niveau zijn. Blijft één dimensie achter, dan stagneert de hele beweging.</p>
       </div>
     </div>
 
@@ -1407,7 +1589,7 @@
         <ul>
           <li><strong>Formeel mandaat</strong> voor decentrale beslissingen</li>
           <li><strong>Governance-kaders</strong> vanuit centraal niveau</li>
-          <li><strong>Geoefende principes</strong> &mdash; concreet · bekend · geoefend · escalatiepad</li>
+          <li><strong>Geoefende principes</strong>, concreet · bekend · geoefend · escalatiepad</li>
         </ul>
         <div class="limit-source"><strong>Bron:</strong> Ykema (2026) 4 eisen · KPMG &amp; INSEAD (2026) · Roos (2026) Charter</div>
       </div>
@@ -1417,8 +1599,8 @@
         <h4>Platform &amp; Infrastructuur</h4>
         <ul>
           <li><strong>Gedeeld AI-platform</strong> voor pilots</li>
-          <li><strong>Data-ontsluiting</strong> beschikbaar &mdash; toegang, kwaliteit, lineage</li>
-          <li><strong>MLOps-pijplijn</strong> &mdash; deployment, monitoring, drift-detectie</li>
+          <li><strong>Data-ontsluiting</strong> beschikbaar, toegang, kwaliteit, lineage</li>
+          <li><strong>MLOps-pijplijn</strong>, deployment, monitoring, drift-detectie</li>
         </ul>
         <div class="limit-source"><strong>Bron:</strong> Loth (2025) 4-Fundament · Gartner (2025) MLOps · Forsgren et al. (2025)</div>
       </div>
@@ -1428,7 +1610,7 @@
         <h4>Volwassenheid &amp; Eigenaarschap</h4>
         <ul>
           <li><strong>AI-geletterdheid</strong> via Future Ready Skill Framework</li>
-          <li><strong>Psychologische veiligheid</strong> &mdash; succesvol falen toegestaan</li>
+          <li><strong>Psychologische veiligheid</strong>, succesvol falen toegestaan</li>
           <li><strong>Cultuur</strong>: gedrag &rarr; overtuigingen &rarr; waarden &rarr; identiteit</li>
         </ul>
         <div class="limit-source"><strong>Bron:</strong> Beerepoot (2026) Cultuur-Ontwikkelmodel · Van Benten (2026) · Edmondson (1999)</div>
@@ -1459,7 +1641,7 @@
       <div class="phase ph1">
         <div class="ph-num">Fase 01 · Start</div>
         <div class="ph-title">Fundament</div>
-        <div class="ph-period">Maanden 1 — 3</div>
+        <div class="ph-period">Maanden 1 tot 3</div>
         <span class="ph-trede">Trede 1 + 2 <em>· Roos (2026)</em></span>
         <div class="ph-trapeze">Verandermodel <strong>Trapeze</strong>: Oriëntatie &amp; Retentie <em>(Roos, AI Achmea 2026)</em></div>
         <div class="gate-stack">
@@ -1473,7 +1655,7 @@
           </button>
           <button class="dim" onclick="openM('f1-gov')">
             <div class="dim-tag">◇ Governance</div>
-            <div class="dim-main">Governance Charter &mdash; rollen, principes, escalatiepaden</div>
+            <div class="dim-main">Governance Charter met rollen, principes en escalatiepaden</div>
           </button>
           <button class="dim" onclick="openM('f1-enable')">
             <div class="dim-tag">◇ Enablement</div>
@@ -1486,14 +1668,14 @@
       <div class="phase ph2">
         <div class="ph-num">Fase 02 · Bewijs</div>
         <div class="ph-title">Pilot</div>
-        <div class="ph-period">Maanden 4 — 9</div>
+        <div class="ph-period">Maanden 4 tot 9</div>
         <span class="ph-trede">Trede 3 + 4 <em>· Roos (2026)</em></span>
         <div class="ph-trapeze">Verandermodel <strong>Trapeze</strong>: Experiment &amp; Betekenis <em>(Roos, AI Achmea 2026)</em></div>
         <button class="gate" onclick="openM('g2')">Gate 2 · Value proof + scale-readiness</button>
         <div class="dims">
           <button class="dim" onclick="openM('f2-org')">
             <div class="dim-tag">◇ Organisatie</div>
-            <div class="dim-main">Spoke Institutioneel autonoom &mdash; MVP &rarr; pilot in productie</div>
+            <div class="dim-main">Spoke Institutioneel autonoom, MVP &rarr; pilot in productie</div>
           </button>
           <button class="dim" onclick="openM('f2-gov')">
             <div class="dim-tag">◇ Governance</div>
@@ -1534,7 +1716,7 @@
         <button class="embed-card pilot" onclick="openM('uc')">
           <div class="embed-label">★ Pilot · waardestroom Institutioneel</div>
           <h6>AI-gedreven werkproces-toepassing</h6>
-          <p>Van generieke AI-hulpmiddelen naar werkproces-gerichte oplossing &mdash; 1 van 3 spokes als testbed met TEVV.</p>
+          <p>Van generieke AI-hulpmiddelen naar werkproces-gerichte oplossing,1 van 3 spokes als testbed met TEVV.</p>
           <div class="pilot-stats">
             <span class="pilot-stat">MVP + TEVV</span>
             <span class="pilot-stat">pilot in productie</span>
@@ -1547,14 +1729,14 @@
       <div class="phase ph3">
         <div class="ph-num">Fase 03 · Groei</div>
         <div class="ph-title">Schaal</div>
-        <div class="ph-period">Maanden 10 — 18</div>
+        <div class="ph-period">Maanden 10 tot 18</div>
         <span class="ph-trede">Trede 5 <em>· Roos (2026)</em></span>
         <div class="ph-trapeze">Verandermodel <strong>Trapeze</strong>: Verankeren &amp; Versnellen <em>(Roos, AI Achmea 2026)</em></div>
         <button class="gate" onclick="openM('g3')">Gate 3 · Structurele inbedding</button>
         <div class="dims">
           <button class="dim" onclick="openM('f3-org')">
             <div class="dim-tag">◇ Organisatie</div>
-            <div class="dim-main">Opschaling naar Retail + Werkgever &mdash; Dandelion volledig</div>
+            <div class="dim-main">Opschaling naar Retail + Werkgever, Dandelion volledig</div>
           </button>
           <button class="dim" onclick="openM('f3-gov')">
             <div class="dim-tag">◇ Governance</div>
@@ -1578,7 +1760,7 @@
       <div class="section-num">06<span>Beoogd resultaat</span></div>
       <div>
         <h2>De <span class="accent-oranje">business case</span> in vier cijfers</h2>
-        <p class="section-lead">Wat Achmea ODV beoogt na 18 maanden gefaseerde transformatie &mdash; wanneer Gate 1a, 1b, 2 en 3 zijn gepasseerd.</p>
+        <p class="section-lead">Wat Achmea ODV beoogt na 18 maanden gefaseerde transformatie, wanneer Gate 1a, 1b, 2 en 3 zijn gepasseerd.</p>
         <span class="ambition-flag">Ambitieniveau · te ijken in Gate 1b</span>
       </div>
     </div>
@@ -1586,7 +1768,7 @@
     <div class="res-grid">
       <div class="res-card">
         <span class="res-v">50%</span>
-        <div class="res-l"><strong>Sneller</strong>Doorlooptijd verkort &mdash; richtwaarde McKinsey 6&ndash;12w per pilot</div>
+        <div class="res-l"><strong>Sneller</strong>Doorlooptijd verkort, richtwaarde McKinsey 6&ndash;12w per pilot</div>
       </div>
       <div class="res-card">
         <span class="res-v">75%</span>
@@ -1602,7 +1784,7 @@
       </div>
     </div>
 
-    <p class="ambition-foot"><strong>Let op &mdash;</strong> de cijfers 50% / 75% / &lt;3% zijn ambitiewaarden afgeleid van benchmarks (McKinsey, Roos). De daadwerkelijke ODV-targets worden vastgesteld in <strong>Gate 1b · Data readiness &amp; baseline</strong>, op basis van de baseline-meting van het huidige centrale model. Pas dan zijn deze waarden masterproof.</p>
+    <p class="ambition-foot"><strong>Let op:</strong> de cijfers 50% / 75% / &lt;3% zijn ambitiewaarden afgeleid van benchmarks (McKinsey, Roos). De daadwerkelijke ODV-targets worden vastgesteld in <strong>Gate 1b · Data readiness &amp; baseline</strong>, op basis van de baseline-meting van het huidige centrale model. Pas dan zijn deze waarden masterproof.</p>
   </div>
 </section>
 
@@ -1644,7 +1826,7 @@ const D = {
 
   'g1a': { phase:'ph1', tag:'Gate 1a · Trede 1 · Go / No-Go', title:'Scope &amp; Charter', s:[
     {t:'Wat moet aantoonbaar zijn?', b:[
-      '<strong>Scope vastgelegd</strong> &mdash; probleemstelling, doelgroep, expliciet "niet-doen" (Roos, Business Case 2026)',
+      '<strong>Scope vastgelegd</strong>, probleemstelling, doelgroep, expliciet "niet-doen" (Roos, Business Case 2026)',
       '<strong>Governance Charter</strong> ondertekend met 8 rollen (zie F1-Governance)',
       '<strong>3 randvoorwaarden</strong> geborgd: mandaat dicht bij praktijk · gedeeld risicobeeld · ondersteuning + harde afspraken (thesis §Praktijk)',
       '<strong>Stakeholder-matrix</strong> (Mendelow) opgesteld als bijlage Charter (Beerepoot, 2026)',
@@ -1653,7 +1835,7 @@ const D = {
     {t:'5-elementen-template per kill-criterium (Roos, 2026 p.18)', b:[
       '<strong>Wie beslist:</strong> Executive Sponsor + Product Owner',
       '<strong>Op basis van welke data:</strong> charter-checklist + stakeholder-mapping',
-      '<strong>Drempelvorm:</strong> binair &mdash; charter ondertekend door alle 8 rollen ja/nee',
+      '<strong>Drempelvorm:</strong> binair, charter ondertekend door alle 8 rollen ja/nee',
       '<strong>Kill-criterium:</strong> &lt; 6 van de 8 rollen formeel commiteren binnen 4 weken',
       '<strong>Heroverwegingsmoment:</strong> Reflecteer &amp; Leer (Beerepoot, 2026) vóór ingang G1b'
     ]}
@@ -1662,16 +1844,16 @@ const D = {
   'g1b': { phase:'ph1', tag:'Gate 1b · Trede 2 · Go / No-Go', title:'Data readiness &amp; baseline', s:[
     {t:'Wat moet aantoonbaar zijn?', b:[
       '<strong>Loth Readiness Scan</strong> uitgevoerd op het 4-Fundament: <em>Data, Tech, Processen, Cultuur</em> (Loth, 2025)',
-      '<strong>Data-ontsluiting</strong> beschikbaar voor de pilot-use case &mdash; toegang, kwaliteit, lineage gevalideerd',
+      '<strong>Data-ontsluiting</strong> beschikbaar voor de pilot-use case, toegang, kwaliteit, lineage gevalideerd',
       '<strong>Baseline-meting</strong> compleet: huidige doorlooptijd, approval-cycles, kwaliteit per use-case-type vastgelegd',
-      '<strong>Risico-register</strong> ingevuld op 6 categorieën &mdash; Technisch · Data · Model Drift · Ethiek · Regulatoir · Security (synthese o.b.v. Roos 2026)',
+      '<strong>Risico-register</strong> ingevuld op 6 categorieën, Technisch · Data · Model Drift · Ethiek · Regulatoir · Security (synthese o.b.v. Roos 2026)',
       '<strong>EU AI Act-classificatie</strong> per beoogde use case (high-risk vs limited risk) + DPIA gestart (Dom, 2026)',
-      '<strong>Bias-audit-plan</strong> klaar &mdash; type bias en mitigatie per dataset (Dom, 2026)'
+      '<strong>Bias-audit-plan</strong> klaar, type bias en mitigatie per dataset (Dom, 2026)'
     ]},
     {t:'5-elementen-template per kill-criterium', b:[
       '<strong>Wie beslist:</strong> Data Owner + Responsible AI Lead + Privacy/DPO',
       '<strong>Op basis van welke data:</strong> Readiness Scan-score + DPIA + risk register',
-      '<strong>Drempelvorm:</strong> binair &mdash; data-toegang &amp; DPIA goedgekeurd ja/nee · Readiness ≥ minimum',
+      '<strong>Drempelvorm:</strong> binair, data-toegang &amp; DPIA goedgekeurd ja/nee · Readiness ≥ minimum',
       '<strong>Kill-criterium:</strong> compliance-gating faalt · data-kwaliteit onder norm · high-risk classificatie zonder mitigatie',
       '<strong>Heroverwegingsmoment:</strong> Reflecteer &amp; Leer (Beerepoot, 2026) vóór MVP-start'
     ]},
@@ -1679,17 +1861,17 @@ const D = {
   ], ref:'Roos (2026) Business Case · Loth (2025) Readiness Scan · Dom (2026) · EU AI Act'},
 
   'g2': { phase:'ph2', tag:'Gate 2 · Trede 3+4 · Go / No-Go', title:'Value proof &amp; scale-readiness', s:[
-    {t:'A · Value proof — pilot geslaagd?', b:[
+    {t:'A · Value proof · pilot geslaagd?', b:[
       '<strong>TEVV-cyclus</strong> volledig doorlopen: Test, Evaluation, Verification, Validation (Roos, Business Case 2026)',
       'Doorlooptijd aantoonbaar verkort t.o.v. baseline (G1b)',
-      'Approval-cycle verkort &mdash; minder centrale gatekeeping',
+      'Approval-cycle verkort, minder centrale gatekeeping',
       'Stakeholder-feedback positief op toepasbaarheid in werkproces',
       'Override-rate balanceert undertrust/overtrust (Ykema, 2026)',
       'Bias-audit + drift-monitoring tonen geen onaanvaardbare signalen'
     ]},
-    {t:'B · Scale-readiness — klaar voor Retail + Werkgever?', b:[
+    {t:'B · Scale-readiness · klaar voor Retail en Werkgever?', b:[
       'Spelers in Retail en Werkgever benoemd, multidisciplinair team-template gereed',
-      'Playbook uit pilot gedocumenteerd &mdash; principes blijken werkbaar (Ykema 4 eisen)',
+      'Playbook uit pilot gedocumenteerd, principes blijken werkbaar (Ykema 4 eisen)',
       'Hub heeft schaalbare bouwblokken; geen key-man dependency',
       'Vendor-/platformkeuze met expliciete <strong>exit-strategie</strong> (Roos, Business Case 2026 p.19)',
       'Hidden-resistance in nieuwe spokes in kaart (Roos, AI Achmea 2026)'
@@ -1697,7 +1879,7 @@ const D = {
     {t:'5-elementen-template per kill-criterium', b:[
       '<strong>Wie beslist:</strong> Executive Sponsor + Model Risk Officer + Spoke-leads Retail/Werkgever',
       '<strong>Op basis van welke data:</strong> TEVV-rapport + Model &amp; Risk KPI-laag + scale-readiness checklist',
-      '<strong>Drempelvorm:</strong> mix &mdash; relatieve KPI’s (doorlooptijd/approval) + binaire (DPIA, compliance, 0 governance-incidents)',
+      '<strong>Drempelvorm:</strong> mix, relatieve KPI’s (doorlooptijd/approval) + binaire (DPIA, compliance, 0 governance-incidents)',
       '<strong>Kill-criterium:</strong> reliability onder norm na 2 iteraties · compliance-gating faalt · pessimistisch scenario onacceptabel',
       '<strong>Heroverwegingsmoment:</strong> Reflecteer &amp; Leer vóór opschaling (Beerepoot, 2026)'
     ]},
@@ -1718,7 +1900,7 @@ const D = {
     {t:'5-elementen-template per kill-criterium', b:[
       '<strong>Wie beslist:</strong> Executive Sponsor + portfolio-board ODV',
       '<strong>Op basis van welke data:</strong> Model &amp; Risk-rapportage · audit-uitkomsten · cultuur-assessment',
-      '<strong>Drempelvorm:</strong> mix &mdash; absoluut (audit-uitslag, drift-norm) + relatief (cultuur-progressie)',
+      '<strong>Drempelvorm:</strong> mix, absoluut (audit-uitslag, drift-norm) + relatief (cultuur-progressie)',
       '<strong>Kill-criterium:</strong> structurele governance-incidents · key-man risk persisteert · cultuur stagneert op niveau "gedrag"',
       '<strong>Heroverwegingsmoment:</strong> jaarlijkse Reflecteer &amp; Leer in operating rhythm'
     ]},
@@ -1727,7 +1909,7 @@ const D = {
 
   /* ─── EMBEDDED ─── */
   'md': { phase:'ph2', tag:'Fase 2 · Gate-architectuur', title:'5-elementen-template per metriek', s:[
-    {t:'Structuur ligt vast — waarden volgen uit Fase 1b', p:'Roos (2026, Business Case p.18) eist per gate-metriek vijf vooraf vastgestelde elementen. Concrete drempelwaarden worden in Fase 1b vastgelegd na de baseline-meting; de structuur staat nu al.'},
+    {t:'Structuur ligt vast, waarden volgen uit Fase 1b', p:'Roos (2026, Business Case p.18) eist per gate-metriek vijf vooraf vastgestelde elementen. Concrete drempelwaarden worden in Fase 1b vastgelegd na de baseline-meting. De structuur staat nu al.'},
     {t:'Element 1 · Metriek (wat meten we)', b:[
       'Doorlooptijd · weken van use-case-aanvraag tot productie',
       'Approval-cycles · aantal centrale toetsmomenten per use case',
@@ -1737,9 +1919,9 @@ const D = {
     ]},
     {t:'Element 2 · Meetwijze (hoe meten we)', p:'Per metriek vooraf vastgelegd in Charter: instrument, frequentie, populatie. Bijvoorbeeld doorlooptijd op de eerste 5 use-cases in Spoke Institutioneel.'},
     {t:'Element 3 · Drempelvorm (welk type besluit)', b:[
-      'Binair &mdash; ja/nee (compliance, DPIA)',
-      'Absoluut &mdash; harde norm (drift &lt; X, hallucination-rate &lt; Y)',
-      'Relatief &mdash; % verbetering t.o.v. baseline (doorlooptijd, approval-cycles)'
+      'Binair, ja/nee (compliance, DPIA)',
+      'Absoluut, harde norm (drift &lt; X, hallucination-rate &lt; Y)',
+      'Relatief,% verbetering t.o.v. baseline (doorlooptijd, approval-cycles)'
     ]},
     {t:'Element 4 · Wie beslist', p:'Per gate vooraf belegd bij specifieke rollen uit het Charter (zie F1-Governance). Geen comité-besluitvorming.'},
     {t:'Element 5 · Kill-criterium', p:'Niet alleen success-norm; ook expliciet stop-norm. Bijvoorbeeld: "reliability onder minimum na 2 iteraties → stop of bijsturen". Voorkomt sunk-cost-doormodderen.'}
@@ -1752,7 +1934,7 @@ const D = {
       'MVP voorbij generieke hulpmiddelen (Copilot/AchmeaGPT) richting werkproces-toepassing',
       '<strong>TEVV-cyclus</strong>: Test → Evaluation → Verification → Validation (Roos, 2026)',
       'Volledige pilot in productie binnen Charter-kaders',
-      'Concrete use case &mdash; te bepalen door Spoke Institutioneel in Fase 1'
+      'Concrete use case, te bepalen door Spoke Institutioneel in Fase 1'
     ]},
     {t:'Wat wordt geleerd?', b:[
       'Werkt decentrale uitvoering binnen centrale kaders?',
@@ -1765,11 +1947,11 @@ const D = {
   /* ───────────── FASE 1 — Trede 1+2 ───────────── */
   'f1-org': { phase:'ph1', tag:'Fase 01 · Organisatie', title:'Hub &amp; Spoke opgericht, mandaat belegd', s:[
     {t:'Concrete acties', b:[
-      'Hub (KAI-team) gepositioneerd als <strong>Center of Enablement</strong> &mdash; faciliterend, niet uitvoerend',
+      'Hub (AI team Achmea) gepositioneerd als <strong>Center of Enablement</strong>, faciliterend, niet uitvoerend',
       'Spoke Institutioneel formeel benoemd, multidisciplinair team',
-      'Mandatenmatrix vastgesteld &mdash; wat mag de spoke autonoom?',
+      'Mandatenmatrix vastgesteld, wat mag de spoke autonoom?',
       'Stakeholder-matrix Mendelow (Beerepoot, 2026) als bijlage Charter',
-      'Adresseert "gat in het midden" &mdash; tactische vertaling naar mandaat en eigenaarschap',
+      'Adresseert "gat in het midden", tactische vertaling naar mandaat en eigenaarschap',
       'Build/Buy/Partner-keuze voor centraal platform met exit-plan (Roos, 2026)'
     ]},
     {t:'Waarom in Fase 1?', p:'Zonder formeel mandaat ontstaat fragmentatie of ontwijkgedrag. Roos (2026) eist organisatie-inrichting vóór technische realisatie.'}
@@ -1795,20 +1977,20 @@ const D = {
       '<strong>Risicotaxonomie 6 categorieën</strong>: Technisch · Data · Model Drift · Ethiek · Regulatoir · Security (synthese o.b.v. Roos 2026 risico’s)',
       '<strong>Anatomy of an AI System</strong> als checklist voor scope (Dom, 2026)'
     ]},
-    {t:'Geen accountability gap', p:'Charter sluit Ykema’s "accountability gap" door per beslismoment te benoemen wie verantwoordelijk is &mdash; medewerker, leidinggevende of leverancier. Zonder deze expliciete belegging blijven principes papier.'}
+    {t:'Geen accountability gap', p:'Charter sluit Ykema’s "accountability gap" door per beslismoment te benoemen wie verantwoordelijk is: medewerker, leidinggevende of leverancier. Zonder deze expliciete belegging blijven principes papier.'}
   ], ref:'Roos (2026) Business Case · Ykema (2026) · Dom (2026) · KPMG &amp; INSEAD (2026) · Achmea AI Policy · EU AI Act'},
 
   'f1-enable': { phase:'ph1', tag:'Fase 01 · Enablement', title:'Readiness, randvoorwaarden &amp; principe-oefening', s:[
     {t:'Loth Readiness Scan op 4-Fundament', b:[
-      '<strong>Data</strong> &mdash; toegang, kwaliteit, lineage',
-      '<strong>Tech</strong> &mdash; platform, MLOps, integratie',
-      '<strong>Processen</strong> &mdash; werkproces-koppeling, eigenaarschap',
-      '<strong>Cultuur</strong> &mdash; psychologische veiligheid, leerbereidheid'
+      '<strong>Data</strong>, toegang, kwaliteit, lineage',
+      '<strong>Tech</strong>, platform, MLOps, integratie',
+      '<strong>Processen</strong>, werkproces-koppeling, eigenaarschap',
+      '<strong>Cultuur</strong>, psychologische veiligheid, leerbereidheid'
     ]},
     {t:'Drie randvoorwaarden uit de praktijkanalyse (thesis §Praktijk)', b:[
-      '<strong>Mandaat dicht bij de praktijk</strong> &mdash; spoke is bevoegd om keuzes te maken, inclusief build-vs-buy',
-      '<strong>Gedeeld risicobeeld</strong> &mdash; centrale en decentrale perspectieven uitgelijnd',
-      '<strong>Ondersteuning + harde afspraken</strong> &mdash; vertrouwen + basisdiscipline (security, datakwaliteit, productiegang)'
+      '<strong>Mandaat dicht bij de praktijk</strong>, spoke is bevoegd om keuzes te maken, inclusief build-vs-buy',
+      '<strong>Gedeeld risicobeeld</strong>, centrale en decentrale perspectieven uitgelijnd',
+      '<strong>Ondersteuning + harde afspraken</strong>, vertrouwen + basisdiscipline (security, datakwaliteit, productiegang)'
     ]},
     {t:'Principe-oefenprogramma (Ykema, 2026)', p:'Een principe op papier ≠ werkend principe. Spoke-team oefent dilemma-cases tot escalatiepad en oordeel reproduceerbaar zijn. Zonder oefening valt principle-based governance terug op rule-based reflexen.'},
     {t:'Hidden-resistance diagnose (Roos, AI Achmea 2026)', b:[
@@ -1816,21 +1998,21 @@ const D = {
       'Sponsor-rol ABC actief belegd (Vink, 2026)',
       'Ambassadeurs &amp; gamification klaar voor pilot-fase'
     ]},
-    {t:'Volwassenheidsmeting', p:'Objectief assessment van AI-geletterdheid en data-literacy in Spoke Institutioneel &mdash; ijkpunt voor Gate 2.'}
+    {t:'Volwassenheidsmeting', p:'Objectief assessment van AI-geletterdheid en data-literacy in Spoke Institutioneel, ijkpunt voor Gate 2.'}
   ], ref:'Loth (2025) Readiness Scan · Ykema (2026) · Roos (2026) AI Achmea · Vink (2026) · Beerepoot (2026)'},
 
   /* ───────────── FASE 2 — Trede 3+4 ───────────── */
-  'f2-org': { phase:'ph2', tag:'Fase 02 · Organisatie', title:'Spoke autonoom — MVP &rarr; pilot in productie', s:[
+  'f2-org': { phase:'ph2', tag:'Fase 02 · Organisatie', title:'Spoke autonoom, van MVP naar pilot in productie', s:[
     {t:'Wat gebeurt hier?', b:[
       'Spoke Institutioneel werkt autonoom binnen Charter-kaders',
-      'MVP gebouwd &mdash; eerste werkproces-gerichte AI-toepassing',
-      '<strong>TEVV-cyclus</strong> (Test, Evaluation, Verification, Validation) &mdash; Roos (2026)',
-      'Pilot in productie &mdash; volledig live, niet alleen sandbox',
+      'MVP gebouwd, eerste werkproces-gerichte AI-toepassing',
+      '<strong>TEVV-cyclus</strong> (Test, Evaluation, Verification, Validation), Roos (2026)',
+      'Pilot in productie, volledig live, niet alleen sandbox',
       'Centrale Hub valideert vóór productiename: toetsmoment, geen approval-bottleneck',
       'End-to-end eigenaarschap binnen het spoke-team',
       '<strong>Ambassadeur-mechaniek</strong> + micro-learning actief (Vink, 2026)'
     ]},
-    {t:'Wat is het bewijspunt?', p:'Of de verschuiving "van centrale uitvoering naar decentrale levering" werkelijk versnelt &mdash; en of het centrale team succesvol verschuift van "doener" naar "faciliteerder" (HBR, 2021).'}
+    {t:'Wat is het bewijspunt?', p:'Of de verschuiving "van centrale uitvoering naar decentrale levering" werkelijk versnelt, en of het centrale team succesvol verschuift van "doener" naar "faciliteerder" (HBR, 2021).'}
   ], ref:'Roos (2026) Business Case · Harvard Business Review (2021) · Vink (2026) · interview CK, JT'},
 
   'f2-gov': { phase:'ph2', tag:'Fase 02 · Governance', title:'Mix rule- &amp; principle-based in werking', s:[
@@ -1841,14 +2023,14 @@ const D = {
       'Reuse before build'
     ]},
     {t:'Principle-based in actie (Ykema 4 eisen toegepast)', b:[
-      'Transparante communicatie bij klant-/medewerker-impact &mdash; getoetst in praktijkcase',
-      'Human-in-the-loop bij significante impact &mdash; geoefend in dilemma-sessies',
-      'Dataminimalisatie per use-case &mdash; concreet bekend in spoke',
-      'Aantoonbare outputkwaliteit &mdash; escalatiepad bij twijfel'
+      'Transparante communicatie bij klant-/medewerker-impact, getoetst in praktijkcase',
+      'Human-in-the-loop bij significante impact, geoefend in dilemma-sessies',
+      'Dataminimalisatie per use-case, concreet bekend in spoke',
+      'Aantoonbare outputkwaliteit, escalatiepad bij twijfel'
     ]},
     {t:'Continue monitoring vanaf F2 (niet pas F3)', b:[
-      '<strong>Drift-detectie</strong> wekelijks &mdash; Roos noemt silent drift als top-risico',
-      '<strong>Override-rate</strong> als KPI &mdash; balanceert undertrust/overtrust (Ykema, 2026)',
+      '<strong>Drift-detectie</strong> wekelijks, Roos noemt silent drift als top-risico',
+      '<strong>Override-rate</strong> als KPI, balanceert undertrust/overtrust (Ykema, 2026)',
       '<strong>Bias-audit</strong> per release (Dom, 2026)',
       'Governance-incidenten centraal geregistreerd'
     ]}
@@ -1870,7 +2052,7 @@ const D = {
     {t:'Dandelion volledig', b:[
       'Spokes Retail en Werkgever volgen het beproefde Institutioneel-pad',
       'Multiple Hub-and-Spoke: per kernonderdeel een eigen hub mogelijk (Zorg, S&amp;I, SAR, ODV)',
-      'Functionele redundantie: hubs nemen elkaars werk over &mdash; veerkracht boven efficiëntie',
+      'Functionele redundantie: hubs nemen elkaars werk over, veerkracht boven efficiëntie',
       'Geen afhankelijkheid van één centraal knooppunt of sleutelfiguur'
     ]},
     {t:'Aansluiting op Achmea-DNA', p:'Het multiple hub-and-spoke model sluit aan op de bestaande verzameling autonome domeinen. Geen fundamentele breuk; logisch vervolg op de bestaande inrichting.'}
@@ -1879,10 +2061,10 @@ const D = {
   'f3-gov': { phase:'ph3', tag:'Fase 03 · Governance', title:'Continue monitoring, audit &amp; tweede-orde-effecten', s:[
     {t:'Geborgde cyclus', b:[
       'Centrale validatie/toets vóór productiename per use-case',
-      'Drift-detectie en retraining op basis van signalen &mdash; voorkomt silent drift (Roos, 2026)',
+      'Drift-detectie en retraining op basis van signalen, voorkomt silent drift (Roos, 2026)',
       'Centraal incident-register over alle spokes',
       'Jaarlijkse responsible AI-audit met externe blik',
-      'Periodieke heroverweging van principes &mdash; lerende governance'
+      'Periodieke heroverweging van principes, lerende governance'
     ]},
     {t:'Jevon’s paradox-monitor (Dom, 2026)', p:'Bewaak de tweede-orde-effecten van AI-succes: efficiëntiewinst kan elders onbedoelde effecten geven (verdwijnen instapkennis, mentale overbelasting, klantimpact). Verplicht onderdeel van de jaarlijkse audit.'},
     {t:'Co-design met klantpanel (Dom, 2026)', p:'Bij klantgerichte AI-toepassingen: structureel klantpanel raadplegen vóór en na release. Voorkomt dat narratieven en design-keuzes alleen vanuit ODV worden bepaald.'}
@@ -1893,13 +2075,13 @@ const D = {
       '<strong>Critical &amp; Creative Thinking</strong>',
       '<strong>Digital &amp; Technology Skills</strong> incl. Digital Literacy, Data Literacy, AI Literacy, Digital Ethics &amp; Governance, UX &amp; Digital Design Thinking',
       '<strong>Human-Centric Skills</strong>: Psychological Safety Creation, Feedback Literacy, Influence without Authority',
-      'T- én V-shaped professionals (V-shaped vaak passender voor AI-engineers) &mdash; Van Benten (2026)'
+      'T- én V-shaped professionals (V-shaped vaak passender voor AI-engineers), Van Benten (2026)'
     ]},
     {t:'Cultuur-Ontwikkelmodel (Beerepoot, 2026)', b:[
-      'Niveau 1 · <strong>Gedragingen</strong> &mdash; zichtbaar gebruik, experimenteren',
-      'Niveau 2 · <strong>Overtuigingen</strong> &mdash; "AI maakt mijn werk beter"',
-      'Niveau 3 · <strong>Waarden</strong> &mdash; verantwoord gebruik, transparantie',
-      'Niveau 4 · <strong>Rol/identiteit</strong> &mdash; AI-versterkte professional als nieuwe standaard'
+      'Niveau 1 · <strong>Gedragingen</strong>, zichtbaar gebruik, experimenteren',
+      'Niveau 2 · <strong>Overtuigingen</strong>,"AI maakt mijn werk beter"',
+      'Niveau 3 · <strong>Waarden</strong>, verantwoord gebruik, transparantie',
+      'Niveau 4 · <strong>Rol/identiteit</strong>, AI-versterkte professional als nieuwe standaard'
     ]},
     {t:'Vink interventie-mix', b:[
       'Communities of Practice tussen hubs (Vink, 2026)',
