@@ -2314,19 +2314,22 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); })
 
 /* ───── Presentatie-modus (auto-tour) ───── */
 const TOUR = [
-  { sel: 'header.hero',                            dwell: 4500, label: 'Introductie' },
-  { sel: '.these',                                 dwell: 4500, label: 'Centrale these' },
-  { sel: 'section.block:nth-of-type(1)',           dwell: 5000, label: '01 · Hypothese meetbaar maken' },
-  { sel: 'section.block:nth-of-type(2)',           dwell: 5500, label: '02 · Knelpunt' },
-  { sel: 'section.block:nth-of-type(3)',           dwell: 5000, label: '03 · Hub-and-Spoke' },
-  { sel: 'section.block:nth-of-type(4)',           dwell: 5000, label: '04 · Drie randvoorwaarden' },
+  // ─── 00:00 — 00:20 · RENÉ — opening + knelpunt (20s) ───
+  { sel: 'header.hero',                            dwell: 5000, label: 'Introductie' },
+  { sel: '.these',                                 dwell: 4000, label: 'Centrale these' },
+  { sel: 'section.block:nth-of-type(1)',           dwell: 3000, label: '01 · Hypothese meetbaar maken' },
+  { sel: 'section.block:nth-of-type(2)',           dwell: 8000, label: '02 · Knelpunt' },
+  // ─── 00:20 — 00:42 · NIENKE — hub-and-spoke (22s) ───
+  { sel: 'section.block:nth-of-type(3)',           dwell: 22000, label: '03 · Multiple Hub-and-Spoke' },
+  // ─── 00:42 — 01:10 · JITSKE — roadmap + gates (28s) ───
   { sel: '.block.roadmap',                         dwell: 3000, label: '05 · 3 fasen · 18 maanden' },
-  { sel: '.phase.ph1',     dwell: 4500, label: 'Fase 1 · Trede 1+2', modal: 'g1a' },
-  { sel: '.phase.ph1',     dwell: 4500, label: 'Gate 1b · Data readiness', modal: 'g1b' },
-  { sel: '.phase.ph2',     dwell: 5000, label: 'Fase 2 · Pilot · Trede 3+4', modal: 'g2' },
-  { sel: '.phase.ph2',     dwell: 4500, label: '5-elementen-template per metriek', modal: 'md' },
-  { sel: '.phase.ph3',     dwell: 4500, label: 'Fase 3 · Trede 5 · Schaal', modal: 'g3' },
-  { sel: '.block.resultaat', dwell: 5500, label: '06 · Beoogd resultaat' }
+  { sel: '.phase.ph1', dwell: 5000, label: 'Gate 1a · Scope &amp; Charter', modal: 'g1a' },
+  { sel: '.phase.ph1', dwell: 5000, label: 'Gate 1b · Data readiness',     modal: 'g1b' },
+  { sel: '.phase.ph2', dwell: 6000, label: 'Gate 2 · Value proof &amp; scale-readiness', modal: 'g2'  },
+  { sel: '.phase.ph2', dwell: 4000, label: '5-elementen-template',         modal: 'md'  },
+  { sel: '.phase.ph3', dwell: 5000, label: 'Gate 3 · Structurele inbedding', modal: 'g3' },
+  // ─── 01:10 — 01:30 · LYNN — resultaat (20s) ───
+  { sel: '.block.resultaat',                       dwell: 20000, label: '06 · Beoogd resultaat' }
 ];
 
 let TOUR_TIMER = null;
