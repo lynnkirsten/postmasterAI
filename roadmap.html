@@ -1518,6 +1518,32 @@
     font-size: 0.85rem;
   }
 
+  /* Audio-indicator (kleine luidspreker in caption als pitch.mp3 speelt) */
+  .audio-on {
+    display: none;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--oranje);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-left: 0.4rem;
+    padding-left: 0.6rem;
+    border-left: 1px solid rgba(255,255,255,0.25);
+  }
+  body.presenting.with-audio .audio-on { display: inline-flex; }
+  .audio-on .pulse {
+    width: 7px; height: 7px;
+    background: var(--oranje);
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.35; transform: scale(0.85); }
+    50%      { opacity: 1;    transform: scale(1.15); }
+  }
+
   /* Subtle entrance animations */
   .reveal {
     opacity: 0;
@@ -2334,12 +2360,24 @@ const TOUR = [
 
 let TOUR_TIMER = null;
 let TOUR_ABORT = false;
+const PITCH_AUDIO = new Audio('pitch.mp3');
+PITCH_AUDIO.preload = 'auto';
 
 function startTour() {
   TOUR_ABORT = false;
   document.body.classList.add('presenting');
   const totalDwell = TOUR.reduce((a, s) => a + s.dwell, 0);
   let elapsed = 0;
+
+  // Start audio mee als pitch.mp3 beschikbaar is. Faalt stil als het bestand er nog niet is.
+  PITCH_AUDIO.currentTime = 0;
+  PITCH_AUDIO.play().then(() => {
+    document.body.classList.add('with-audio');
+  }).catch(() => {
+    document.body.classList.remove('with-audio');
+    // geen audio beschikbaar — tour speelt door zonder geluid
+  });
+
   runStep(0, totalDwell, elapsed);
 }
 
@@ -2381,7 +2419,9 @@ function runStep(i, total, elapsed) {
 function finishTour() {
   clearTimeout(TOUR_TIMER);
   closeM();
-  document.body.classList.remove('presenting');
+  PITCH_AUDIO.pause();
+  PITCH_AUDIO.currentTime = 0;
+  document.body.classList.remove('presenting', 'with-audio');
   document.querySelectorAll('.present-focus').forEach(e => e.classList.remove('present-focus'));
   document.getElementById('progress-bar').style.width = '0%';
   if (!TOUR_ABORT) {
@@ -2403,7 +2443,10 @@ function stopTour() {
 <button class="present-stop" onclick="stopTour()" aria-label="Presentatie stoppen">
   Stop
 </button>
-<div class="present-caption" id="caption-text"></div>
+<div class="present-caption">
+  <span id="caption-text"></span>
+  <span class="audio-on" title="Audio speelt mee"><span class="pulse"></span>Audio</span>
+</div>
 
 </body>
 </html>
