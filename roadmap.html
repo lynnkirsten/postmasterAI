@@ -2343,17 +2343,17 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); })
 // pitch.mp4 stopt op 1:49 (eind Jitske); pitch2.mp4 neemt over voor Lynn.
 // Geen modals: alleen highlight + caption.
 const TOUR = [
-  // ─── 00:00 — 00:22 · RENÉ — opening + knelpunt (22s) ───
-  { sel: 'header.hero',                            dwell: 5000,  label: 'Introductie' },
-  { sel: '.these',                                 dwell: 4500,  label: 'Centrale these' },
-  { sel: 'section.block:nth-of-type(1)',           dwell: 4000,  label: '01 · Hypothese meetbaar maken' },
-  { sel: 'section.block:nth-of-type(2)',           dwell: 8500,  label: '02 · Knelpunt' },
-  // ─── 00:22 — 00:58 · NIENKE — hub-and-spoke (36s) ───
+  // ─── 00:00 — 00:25 · RENÉ — opening + knelpunt (25s, +3s buffer voor de overgang) ───
+  { sel: 'header.hero',                            dwell: 5500,  label: 'Introductie' },
+  { sel: '.these',                                 dwell: 5000,  label: 'Centrale these' },
+  { sel: 'section.block:nth-of-type(1)',           dwell: 4500,  label: '01 · Hypothese meetbaar maken' },
+  { sel: 'section.block:nth-of-type(2)',           dwell: 10000, label: '02 · Knelpunt' },
+  // ─── 00:25 — 01:01 · NIENKE — hub-and-spoke (36s, visueel 3s na audio-start) ───
   { sel: 'section.block:nth-of-type(3)',           dwell: 36000, label: '03 · Multiple Hub-and-Spoke' },
-  // ─── 00:58 — 01:49 · JITSKE — roadmap + 3 fases (51s, geen modals) ───
-  { sel: '.block.roadmap', dwell: 15000, label: '05 · 3 fasen · 18 maanden' },
-  { sel: '.phase.ph1',     dwell: 11000, label: 'Fase 1 · Oriëntatie &amp; Retentie' },
-  { sel: '.phase.ph2',     dwell: 13000, label: 'Fase 2 · Experiment &amp; Betekenis' },
+  // ─── 01:01 — 01:49 · JITSKE — roadmap + 3 fases (48s, visueel 3s na audio-start) ───
+  { sel: '.block.roadmap', dwell: 14000, label: '05 · 3 fasen · 18 maanden' },
+  { sel: '.phase.ph1',     dwell: 10000, label: 'Fase 1 · Oriëntatie &amp; Retentie' },
+  { sel: '.phase.ph2',     dwell: 12000, label: 'Fase 2 · Experiment &amp; Betekenis' },
   { sel: '.phase.ph3',     dwell: 12000, label: 'Fase 3 · Verankeren &amp; Versnellen' },
   // ─── 01:49 — 02:18 · LYNN — resultaat (28,6s) ───
   { sel: '.block.resultaat',                       dwell: 28600, label: '06 · Beoogd resultaat' }
