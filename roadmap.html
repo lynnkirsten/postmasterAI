@@ -2343,56 +2343,36 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); })
 // pitch.mp4 stopt op 1:49 (eind Jitske); pitch2.mp4 neemt over voor Lynn.
 // Geen modals: alleen highlight + caption.
 const TOUR = [
-  // ─── 00:00 — 00:18 · RENÉ — opening + knelpunt ───
-  { sel: 'header.hero',                            dwell: 4500,  label: 'Introductie' },
-  { sel: '.these',                                 dwell: 3500,  label: 'Centrale these' },
-  { sel: 'section.block:nth-of-type(1)',           dwell: 3000,  label: '01 · Hypothese meetbaar maken' },
-  { sel: 'section.block:nth-of-type(2)',           dwell: 7000,  label: '02 · Knelpunt' },
-  // ─── 00:18 — 00:55 · NIENKE — hub-and-spoke (37s) ───
-  { sel: 'section.block:nth-of-type(3)',           dwell: 37000, label: '03 · Multiple Hub-and-Spoke' },
-  // ─── 00:55 — 01:49 · JITSKE — roadmap + 3 fases (54s, geen modals) ───
-  { sel: '.block.roadmap', dwell: 16000, label: '05 · 3 fasen · 18 maanden' },
+  // ─── 00:00 — 00:22 · RENÉ — opening + knelpunt (22s) ───
+  { sel: 'header.hero',                            dwell: 5000,  label: 'Introductie' },
+  { sel: '.these',                                 dwell: 4500,  label: 'Centrale these' },
+  { sel: 'section.block:nth-of-type(1)',           dwell: 4000,  label: '01 · Hypothese meetbaar maken' },
+  { sel: 'section.block:nth-of-type(2)',           dwell: 8500,  label: '02 · Knelpunt' },
+  // ─── 00:22 — 00:58 · NIENKE — hub-and-spoke (36s) ───
+  { sel: 'section.block:nth-of-type(3)',           dwell: 36000, label: '03 · Multiple Hub-and-Spoke' },
+  // ─── 00:58 — 01:49 · JITSKE — roadmap + 3 fases (51s, geen modals) ───
+  { sel: '.block.roadmap', dwell: 15000, label: '05 · 3 fasen · 18 maanden' },
   { sel: '.phase.ph1',     dwell: 11000, label: 'Fase 1 · Oriëntatie &amp; Retentie' },
-  { sel: '.phase.ph2',     dwell: 14000, label: 'Fase 2 · Experiment &amp; Betekenis' },
-  { sel: '.phase.ph3',     dwell: 13000, label: 'Fase 3 · Verankeren &amp; Versnellen' },
-  // ─── 01:49 — 02:18 · LYNN — resultaat (nieuwe audio: pitch2.mp4, 28,65s) ───
-  { sel: '.block.resultaat',                       dwell: 28650, label: '06 · Beoogd resultaat' }
+  { sel: '.phase.ph2',     dwell: 13000, label: 'Fase 2 · Experiment &amp; Betekenis' },
+  { sel: '.phase.ph3',     dwell: 12000, label: 'Fase 3 · Verankeren &amp; Versnellen' },
+  // ─── 01:49 — 02:18 · LYNN — resultaat (28,6s) ───
+  { sel: '.block.resultaat',                       dwell: 28600, label: '06 · Beoogd resultaat' }
 ];
 
 let TOUR_TIMER = null;
 let TOUR_ABORT = false;
-// Eén audio-element, src wordt geswapt op SWITCH_AT_SEC.
-// pitch.mp4 = René + Nienke + Jitske; pitch2.mp4 = nieuwe Lynn (28,65s).
 const PITCH_AUDIO = new Audio('pitch.mp4');
 PITCH_AUDIO.preload = 'auto';
-const SWITCH_AT_SEC = 109; // pas dit aan als Jitske eerder/later eindigt in pitch.mp4
-let AUDIO_PHASE = 1;  // 1 = pitch.mp4 speelt, 2 = pitch2.mp4 speelt
-
-PITCH_AUDIO.addEventListener('timeupdate', () => {
-  if (AUDIO_PHASE === 1 && PITCH_AUDIO.currentTime >= SWITCH_AT_SEC) {
-    AUDIO_PHASE = 2;
-    PITCH_AUDIO.src = 'pitch2.mp4';
-    PITCH_AUDIO.currentTime = 0;
-    PITCH_AUDIO.play().catch(() => {});
-  }
-});
-PITCH_AUDIO.addEventListener('ended', () => {
-  if (AUDIO_PHASE === 2 && !TOUR_ABORT) finishTour();
-});
+// Audio drijft het einde van de tour.
+PITCH_AUDIO.addEventListener('ended', () => { if (!TOUR_ABORT) finishTour(); });
 
 function startTour() {
   TOUR_ABORT = false;
-  AUDIO_PHASE = 1;
   document.body.classList.add('presenting');
   const totalDwell = TOUR.reduce((a, s) => a + s.dwell, 0);
   let elapsed = 0;
 
-  // Reset audio naar pitch.mp4.
-  if (PITCH_AUDIO.src.indexOf('pitch2.mp4') !== -1) {
-    PITCH_AUDIO.src = 'pitch.mp4';
-  }
   PITCH_AUDIO.currentTime = 0;
-
   PITCH_AUDIO.play().then(() => {
     document.body.classList.add('with-audio');
   }).catch(() => {
@@ -2442,7 +2422,6 @@ function finishTour() {
   closeM();
   PITCH_AUDIO.pause();
   PITCH_AUDIO.currentTime = 0;
-  AUDIO_PHASE = 1;
   document.body.classList.remove('presenting', 'with-audio');
   document.querySelectorAll('.present-focus').forEach(e => e.classList.remove('present-focus'));
   document.getElementById('progress-bar').style.width = '0%';
