@@ -515,6 +515,172 @@
     .hs-spokes { flex-direction: column; }
   }
 
+  /* ─── Hub-spoke driedelige boomweergave ─── */
+  .hs-tree {
+    margin-top: 2rem;
+    background: var(--wit);
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--grijs-2);
+    border-radius: 2px;
+    text-align: center;
+  }
+  .hs-tree-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin: 0.2rem 0;
+  }
+  .hs-tree-stem {
+    text-align: center;
+    color: var(--oranje);
+    margin: 0.5rem auto;
+    width: 2px;
+    height: 28px;
+    background: var(--oranje);
+    position: relative;
+    opacity: 0.85;
+  }
+  .hs-tree-stem::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-style: solid;
+    border-width: 7px 5px 0 5px;
+    border-color: var(--oranje) transparent transparent transparent;
+  }
+  .hs-tree-divider {
+    margin: 1.4rem auto 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--grijs-zacht);
+    font-weight: 700;
+    display: inline-block;
+    border-top: 1px dashed var(--grijs-2);
+    border-bottom: 1px dashed var(--grijs-2);
+  }
+  .hs-box {
+    background: var(--paper);
+    border: 1px solid var(--grijs-2);
+    padding: 0.85rem 1.3rem;
+    border-radius: 2px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--grijs-tekst);
+    text-align: center;
+    min-width: 130px;
+    line-height: 1.3;
+  }
+  .hs-box.central {
+    background: var(--blauw);
+    color: var(--wit);
+    border-color: var(--blauw);
+    font-weight: 600;
+    padding: 1rem 1.8rem;
+    font-size: 1rem;
+  }
+  .hs-box.highlight {
+    background: var(--groen);
+    color: var(--wit);
+    border-color: var(--groen);
+    font-weight: 600;
+    position: relative;
+  }
+  .hs-box.highlight::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 1px dashed var(--groen);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  .hs-box .hs-box-tag {
+    display: block;
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+
+  /* Verantwoordelijkheden-kaarten */
+  .hs-roles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  .hs-role {
+    background: var(--wit);
+    border: 1px solid var(--grijs-2);
+    border-top: 3px solid var(--blauw);
+    padding: 1.6rem 1.7rem 1.8rem;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+  }
+  .hs-role:nth-child(2) { border-top-color: var(--groen); }
+  .hs-role:nth-child(3) { border-top-color: var(--oranje); }
+  .hs-role-tag {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--blauw);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .hs-role:nth-child(2) .hs-role-tag { color: var(--groen); }
+  .hs-role:nth-child(3) .hs-role-tag { color: var(--oranje); }
+  .hs-role h5 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    color: var(--zwart);
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+  .hs-role ul { list-style: none; padding: 0; margin: 0; }
+  .hs-role li {
+    font-size: 0.9rem;
+    padding: 0.4rem 0 0.4rem 1rem;
+    position: relative;
+    color: var(--grijs-tekst);
+    line-height: 1.45;
+  }
+  .hs-role li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--oranje);
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1;
+    top: 0.55rem;
+  }
+  .hs-role-foot {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.78rem;
+    color: var(--grijs-zacht);
+    font-style: italic;
+    line-height: 1.5;
+    border-top: 1px dashed var(--grijs-2);
+    margin-top: 1.2rem;
+  }
+  .hs-role-foot strong {
+    color: var(--groen);
+    font-style: normal;
+    font-weight: 600;
+  }
+  @media (max-width: 900px) { .hs-roles { grid-template-columns: 1fr; } }
+
   /* — Advies grid — */
   .advies-grid {
     display: grid;
@@ -1499,57 +1665,66 @@
       </div>
     </div>
 
-    <div class="hs-layers">
-
-      <div class="hs-layer tech">
-        <div class="hs-layer-head">
-          <span class="hs-layer-num">01</span>
-          <span class="hs-layer-tag">Technische laag</span>
-          <h4>AI team Achmea als centrale hub voor de business-onderdelen</h4>
-        </div>
-        <p class="hs-layer-desc">Het AI team Achmea bepaalt de centrale kaders, gedeelde standaarden en gemeenschappelijke infrastructuur. Elk business-onderdeel (ODV, S&amp;I, Zorg, SAR) is in deze laag een <strong>sub-hub</strong> die de centrale kaders vertaalt naar een eigen pakket aan AI-toepassingen voor de eigen context.</p>
-        <div class="hs-flow">
-          <div class="hs-node is-hub">
-            <span class="node-tag">Centrale hub</span>
-            AI team Achmea
-          </div>
-          <span class="hs-arrow">&rsaquo;</span>
-          <div class="hs-spokes">
-            <div class="hs-node"><span class="node-tag">Sub-hub</span>ODV</div>
-            <div class="hs-node"><span class="node-tag">Sub-hub</span>S&amp;I</div>
-            <div class="hs-node"><span class="node-tag">Sub-hub</span>Zorg</div>
-            <div class="hs-node"><span class="node-tag">Sub-hub</span>SAR</div>
-          </div>
-        </div>
-        <div class="hs-sub-flow">
-          De centrale hub levert <strong>governance, platform, MLOps, gedeelde modellen en monitoring</strong>. De sub-hub vertaalt die set naar werkbare bouwblokken voor de eigen waardestromen.
+    <div class="hs-tree">
+      <div class="hs-tree-row">
+        <div class="hs-box central">
+          <span class="hs-box-tag">Niveau 01 · Centrale hub</span>
+          AI team Achmea
         </div>
       </div>
-
-      <div class="hs-layer func">
-        <div class="hs-layer-head">
-          <span class="hs-layer-num">02</span>
-          <span class="hs-layer-tag">Functionele laag</span>
-          <h4>ODV als hub voor de drie waardestromen</h4>
+      <div class="hs-tree-stem"></div>
+      <div class="hs-tree-row">
+        <div class="hs-box highlight">
+          <span class="hs-box-tag">Sub-hub (uitgelicht)</span>
+          ODV
         </div>
-        <p class="hs-layer-desc">Binnen ODV is de sub-hub op zijn beurt de hub voor drie waardestromen. Die werken autonoom aan AI-use cases dicht op de business. Ze beschikken niet over een eigen technische stack, maar gebruiken de tooling en expertise van de ODV-hub.</p>
-        <div class="hs-flow">
-          <div class="hs-node is-hub">
-            <span class="node-tag">Functionele hub</span>
-            ODV
-          </div>
-          <span class="hs-arrow">&rsaquo;</span>
-          <div class="hs-spokes">
-            <div class="hs-node"><span class="node-tag">Spoke</span>Retail</div>
-            <div class="hs-node"><span class="node-tag">Spoke</span>Werkgever</div>
-            <div class="hs-node"><span class="node-tag">Spoke</span>Institutioneel</div>
-          </div>
-        </div>
-        <div class="hs-sub-flow">
-          De spoke heeft <strong>autonoom eigenaarschap over AI-use cases</strong> binnen de eigen waardestroom. Multidisciplinaire teams werken in korte iteraties dicht op data en werkproces, binnen de kaders die centraal en in ODV zijn afgesproken.
-        </div>
+        <div class="hs-box"><span class="hs-box-tag">Sub-hub</span>S&amp;I</div>
+        <div class="hs-box"><span class="hs-box-tag">Sub-hub</span>Zorg</div>
+        <div class="hs-box"><span class="hs-box-tag">Sub-hub</span>SAR</div>
       </div>
+      <div class="hs-tree-divider">Onder de sub-hub ODV</div>
+      <div class="hs-tree-row">
+        <div class="hs-box"><span class="hs-box-tag">Spoke</span>Retail</div>
+        <div class="hs-box"><span class="hs-box-tag">Spoke</span>Werkgever</div>
+        <div class="hs-box"><span class="hs-box-tag">Spoke</span>Institutioneel</div>
+      </div>
+    </div>
 
+    <div class="hs-roles">
+      <div class="hs-role">
+        <span class="hs-role-tag">Niveau 01 · Centrale hub</span>
+        <h5>AI team Achmea</h5>
+        <ul>
+          <li>Enterprise architectuur</li>
+          <li>Security en compliance</li>
+          <li>Generieke platformdiensten</li>
+          <li>IAM, networking, observability</li>
+          <li>Governance</li>
+          <li>Strategische standaarden</li>
+        </ul>
+      </div>
+      <div class="hs-role">
+        <span class="hs-role-tag">Niveau 02 · Sub-hub (dienstniveau)</span>
+        <h5>ODV (en S&amp;I, Zorg, SAR)</h5>
+        <ul>
+          <li>Domeinspecifieke standaardisatie</li>
+          <li>Regie over subdiensten</li>
+          <li>Integratie binnen de dienst</li>
+          <li>Hergebruik binnen het domein</li>
+          <li>Vertaling van centrale kaders</li>
+        </ul>
+        <p class="hs-role-foot"><strong>Dubbele rol:</strong> technisch een spoke onder de centrale hub, functioneel een hub voor de drie waardestromen.</p>
+      </div>
+      <div class="hs-role">
+        <span class="hs-role-tag">Niveau 03 · Functionele spokes</span>
+        <h5>Retail · Werkgever · Institutioneel</h5>
+        <ul>
+          <li>Concrete oplossingen</li>
+          <li>Implementatie</li>
+          <li>Lokale innovatie</li>
+          <li>Operationele processen</li>
+        </ul>
+      </div>
     </div>
 
     <ul class="pain-list" style="margin-top: 2.5rem;">
