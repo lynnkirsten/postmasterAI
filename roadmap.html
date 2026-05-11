@@ -6,7 +6,7 @@
 <title>AI Delivery Roadmap · Achmea ODV Hub-and-Spoke Model</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital, wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
     /* Achmea blauwen */
@@ -1660,8 +1660,8 @@
     <div class="section-head">
       <div class="section-num">03<span>Nieuw model</span></div>
       <div>
-        <h2><span class="accent">Multiple Hub-and-Spoke</span> in twee lagen</h2>
-        <p class="section-lead">Achmea is van nature een verzameling autonome domeinen. Het Hub-and-Spoke model past daar in twee lagen op: een technische laag die het AI team Achmea verbindt aan de business-onderdelen, en een functionele laag waarin ODV zelf hub wordt voor de drie waardestromen.</p>
+        <h2><span class="accent">Multiple Hub-and-Spoke</span> in drie niveaus</h2>
+        <p class="section-lead">Achmea is van nature een verzameling autonome domeinen. Het Hub-and-Spoke model past daar in drie niveaus op. Op het eerste niveau staat het AI team Achmea als centrale hub. Op het tweede niveau zitten de business-onderdelen (ODV, S&amp;I, Zorg, Aveiro, SAR): technisch zijn dit spokes onder de centrale hub, functioneel zijn dit zelf weer hubs. Onder ODV vinden we op het derde niveau de drie business spokes (Retail, Werkgever, Institutioneel).</p>
       </div>
     </div>
 
@@ -1680,13 +1680,14 @@
         </div>
         <div class="hs-box"><span class="hs-box-tag">Sub-hub</span>S&amp;I</div>
         <div class="hs-box"><span class="hs-box-tag">Sub-hub</span>Zorg</div>
+        <div class="hs-box"><span class="hs-box-tag">Sub-hub</span>Aveiro</div>
         <div class="hs-box"><span class="hs-box-tag">Sub-hub</span>SAR</div>
       </div>
       <div class="hs-tree-divider">Onder de sub-hub ODV</div>
       <div class="hs-tree-row">
-        <div class="hs-box"><span class="hs-box-tag">Spoke</span>Retail</div>
-        <div class="hs-box"><span class="hs-box-tag">Spoke</span>Werkgever</div>
-        <div class="hs-box"><span class="hs-box-tag">Spoke</span>Institutioneel</div>
+        <div class="hs-box"><span class="hs-box-tag">Business spoke</span>Retail</div>
+        <div class="hs-box"><span class="hs-box-tag">Business spoke</span>Werkgever</div>
+        <div class="hs-box"><span class="hs-box-tag">Business spoke</span>Institutioneel</div>
       </div>
     </div>
 
@@ -1705,7 +1706,7 @@
       </div>
       <div class="hs-role">
         <span class="hs-role-tag">Niveau 02 · Sub-hub (dienstniveau)</span>
-        <h5>ODV (en S&amp;I, Zorg, SAR)</h5>
+        <h5>ODV, S&amp;I, Zorg, Aveiro, SAR</h5>
         <ul>
           <li>Domeinspecifieke standaardisatie</li>
           <li>Regie over subdiensten</li>
@@ -1713,10 +1714,10 @@
           <li>Hergebruik binnen het domein</li>
           <li>Vertaling van centrale kaders</li>
         </ul>
-        <p class="hs-role-foot"><strong>Dubbele rol:</strong> technisch een spoke onder de centrale hub, functioneel een hub voor de drie waardestromen.</p>
+        <p class="hs-role-foot"><strong>Dubbele rol:</strong> dit niveau is een <em>technische spoke</em> onder de centrale hub én een <em>functionele sub-hub</em> voor de business spokes daaronder.</p>
       </div>
       <div class="hs-role">
-        <span class="hs-role-tag">Niveau 03 · Functionele spokes</span>
+        <span class="hs-role-tag">Niveau 03 · Business spokes</span>
         <h5>Retail · Werkgever · Institutioneel</h5>
         <ul>
           <li>Concrete oplossingen</li>
@@ -2226,7 +2227,7 @@ const D = {
   'f3-org': { phase:'ph3', tag:'Fase 03 · Organisatie', title:'Opschaling naar Retail + Werkgever', s:[
     {t:'Dandelion volledig', b:[
       'Spokes Retail en Werkgever volgen het beproefde Institutioneel-pad',
-      'Multiple Hub-and-Spoke: per kernonderdeel een eigen hub mogelijk (Zorg, S&amp;I, SAR, ODV)',
+      'Multiple Hub-and-Spoke met sub-hubs per business-onderdeel (ODV, S&amp;I, Zorg, Aveiro, SAR)',
       'Functionele redundantie: hubs nemen elkaars werk over, veerkracht boven efficiëntie',
       'Geen afhankelijkheid van één centraal knooppunt of sleutelfiguur'
     ]},
